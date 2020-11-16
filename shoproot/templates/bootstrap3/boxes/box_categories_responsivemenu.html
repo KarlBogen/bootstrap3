@@ -1,0 +1,24 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{if $BOX_CONTENT2 != ''}
+        <div class="pushy pushy-left">
+<nav class="responsive-nav{if $smarty.const.BOOTSTRAP_THEME == 'slate'} navbar-default{/if}">
+    <div class="menu-header navbar-default text-center">
+        <a id="currentMenu">{#heading_categories#}</a>
+        <div id="back" class="btn btn-default" data-target=""><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></div>
+		<div id="home"><a class="btn btn-default" href="{$home}"><span class="glyphicon glyphicon-home"></span></a></div>
+    </div>
+		{$BOX_CONTENT2}
+		{if $smarty.const.SPECIALS_CATEGORIES === true}
+		{if $smarty.const.SPECIALS_EXISTS === true}
+			<li class="men level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} selected active{/if}"><a class="{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)}active{/if}{if $smarty.const.WHATSNEW_SPECIALS_UPPERCASE === true} up{/if}" href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}">{#heading_specials#}</a></li>
+		{/if}
+		{/if}
+		{if $smarty.const.WHATSNEW_CATEGORIES === true}
+        {*if $smarty.const.WHATSNEW_EXISTS === true*}
+			<li class="men level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} selected active{/if}"><a class="{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)}active{/if}{if $smarty.const.WHATSNEW_SPECIALS_UPPERCASE === true} up{/if}" href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}">{#heading_whatsnew#}</a></li>
+        {*/if*}
+		{/if}
+	</ul>
+</nav>
+</div>
+{/if}

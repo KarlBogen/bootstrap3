@@ -1,0 +1,45 @@
+{config_load file="$language/lang_$language.conf" section="gift_cart"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="gift_cart"}
+{if $ACTIVATE_GIFT == 'true'}
+{$FORM_ACTION}
+<h1 class="well well-sm">{#title#}</h1>
+
+{if $coupon_message != ''}<div class="alert alert-warning">{$coupon_message}</div>{/if}
+{if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+<div class="panel panel-default">
+	<div class="panel-body">
+		{if $GV_AMOUNT neq ''}
+			<p>{#text_info#}</p>
+			<p>{#voucher_balance#} <strong>{$GV_AMOUNT}</strong></p>
+			<div class="well well-sm">
+				<p>{#text_send_to_friend#}</p>
+				<a class="btn btn-info btn-sm" href="{$GV_SEND_TO_FRIEND_LINK}">{#box_send_to_friend#}</a>
+			</div>
+		{/if}
+		{if $COUPON_AMOUNT2 neq ''}
+			<p>{#voucher_redeemed#}</p>
+			<p>{$COUPON_AMOUNT2}</p>
+		{/if}
+		{if $COUPON_HELP_LINK neq ''}
+			<br />
+			<div class="infomessage">{*#cart_coupon#*} {$smarty.const.REDEEMED_COUPON} {$COUPON_HELP_LINK} {#cart_coupon_info#}</a></div>
+		{/if}
+		{if $C_FLAG == 'true'}
+			<p>{#text_gift#}</p>
+				<div class="bs form-inline mb">
+					<div class="form-group">
+						<label>{#text_code#}</label>
+						{$INPUT_CODE|replace:'input':'input class="form-control"'}
+					</div>
+				</div>
+				<div class="pull-left">{$BUTTON_SUBMIT|button}</div>
+
+		{else}
+			<p>{#create_account#}</p>
+			<a class="btn btn-default btn-sm" href="{$LINK_ACCOUNT}"><strong>{#text_create_account#}</strong></a>
+		{/if}
+	</div>
+</div>
+{$FORM_END}
+{/if}

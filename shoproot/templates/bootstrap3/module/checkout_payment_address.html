@@ -1,0 +1,54 @@
+{config_load file="$language/lang_$language.conf" section="checkout_payment_address"}
+{config_load file="$language/lang_$language.conf" section="checkout_navigation"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="checkout_payment_address"}
+<div id="checkoutnavigation" class="row list-group text-center mt">
+  {if isset($NO_SHIPPING)}
+  <div class="col-xs-4 mb"><div class="list-group-item active"><h4>1.<span class="hidden-xs hidden-sm"> {#title_payment#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_payment#}</span></div></div>
+  <div class="col-xs-4 mb"><div class="list-group-item disabled"><h4>2.<span class="hidden-xs hidden-sm"> {#title_confirmation#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_confirmation#}</span></div></div>
+  <div class="col-xs-4 mb"><div class="list-group-item disabled"><h4>3.<span class="hidden-xs hidden-sm"> {#title_success#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_success#}</span></div></div>
+  {else}
+  <div class="col-xs-3 mb"><a href="{$BUTTON_BACK_LINK}" class="list-group-item list-group-item-success"><h4>1.<span class="hidden-xs hidden-sm"> {#title_shipping#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_shipping#}</span></a></div>
+  <div class="col-xs-3 mb"><div class="list-group-item active"><h4>2.<span class="hidden-xs hidden-sm"> {#title_payment#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_payment#}</span></div></div>
+  <div class="col-xs-3 mb"><div class="list-group-item disabled"><h4>3.<span class="hidden-xs hidden-sm"> {#title_confirmation#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_confirmation#}</span></div></div>
+  <div class="col-xs-3 mb"><div class="list-group-item disabled"><h4>4.<span class="hidden-xs hidden-sm"> {#title_success#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_success#}</span></div></div>
+  {/if}
+</div>
+
+<h1 class="well well-sm">{#heading_address#}</h1>
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+
+{$FORM_ACTION}
+<div class="row clearfix">
+<div class="col-md-6 mb">
+  <div class="panel panel-default">
+	<div class="panel-heading">
+    	<h4 class="panel-title">{#text_current_address_short#}</h4>
+	</div>
+	<div class="panel-body">
+		<p>{$ADDRESS_LABEL}</p>
+	</div>
+	{if $BLOCK_ADDRESS}
+		<div class="panel-heading">
+			<h4 class="panel-title">{#title_old_addresses#}</h4>
+		</div>
+		<div class="panel-body">
+			<p>{#text_old_addresses#}</p>
+			{$BLOCK_ADDRESS|replace:'<ol':'<ul'|replace:'</ol':'</ul'|replace:'<li>':'<li><div class="radio">'|replace:'</li>':'</div></li>'}
+		</div>
+	{/if}
+	</div>
+</div>
+
+<div class="col-md-6 mb">
+	{if $MODULE_new_address}
+		{$MODULE_new_address}
+	{/if}
+</div>
+
+</div>
+<div class="clearfix mb">
+	<div class="pull-left">{$BUTTON_BACK|button}</div>
+	<div class="pull-right">{$BUTTON_CONTINUE|button}</div>
+</div>
+{$FORM_END}

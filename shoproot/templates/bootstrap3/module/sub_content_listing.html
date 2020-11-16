@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<a href="{$parent_content.CONTENT_LINK}"><strong>{$parent_content.CONTENT_TITLE}</strong></a>
+	</div>
+	<div class="panel-body">
+	{foreach name=aussen item=content_data from=$sub_content}
+		<a href="{$content_data.CONTENT_LINK}">{$content_data.CONTENT_TITLE}</a>
+	{/foreach}
+	</div>
+</div>

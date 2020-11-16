@@ -1,0 +1,46 @@
+{config_load file="$language/lang_$language.conf" section="product_navigator"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="product_navigator"}
+<div class="productnavigator panel panel-default clearfix">
+	<div class="panel-body text-center">
+		<p class="small">{#product#}&nbsp;<strong>{$ACTUAL_PRODUCT}&nbsp;{#of#}&nbsp;{$PRODUCTS_COUNT}</strong>&nbsp;{#total#}</p>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-1">
+				{if $FIRST != ''}
+					<a href="{$FIRST}" title="{#first#|replace:'&laquo; ':''}"><span class="glyphicon glyphicon-fast-backward"></span><span class="visible-lg-block visible-md-block">{#first#|replace:'&laquo; ':''}</span></a>
+				{else}
+					<span class="text-muted"><span class="glyphicon glyphicon-fast-backward"></span><span class="visible-lg-block visible-md-block">{#first#|replace:'&laquo; ':''}</span></span>
+				{/if}
+			</div>
+			<div class="col-xs-2">
+				{if $PREVIOUS != ''}
+					<a href="{$PREVIOUS}" title="{#back#|replace:'&laquo; ':''}"><span class="glyphicon glyphicon-backward"></span><span class="visible-lg-block visible-md-block">{#back#|replace:'&laquo; ':''}</span></a>
+				{else}
+					<span class="text-muted"><span class="glyphicon glyphicon-backward"></span><span class="visible-lg-block visible-md-block">{#back#|replace:'&laquo; ':''}</span></span>
+				{/if}
+			</div>
+			<div class="col-xs-2">
+				{if $OVERVIEW != ''}
+					<a href="{$OVERVIEW}" title="{#overview#}"><span class="glyphicon glyphicon-list"></span><span class="visible-lg-block visible-md-block">{#overview#}</span></a>
+				{else}
+					<span class="text-muted"><span class="glyphicon glyphicon-list"></span><span class="visible-lg-block visible-md-block">{#overview#}</span></span>
+				{/if}
+			</div>
+			<div class="col-xs-2">
+				{if $NEXT != ''}
+					<a href="{$NEXT}" title="{#next#|replace:' &raquo;':''}"><span class="glyphicon glyphicon-forward"></span><span class="visible-lg-block visible-md-block">{#next#|replace:' &raquo;':''}</span></a>
+				{else}
+					<span class="text-muted"><span class="glyphicon glyphicon-forward"></span><span class="visible-lg-block visible-md-block">{#next#|replace:' &raquo;':''}</span></span>
+				{/if}
+			</div>
+			<div class="col-xs-2">
+				{if $LAST != ''}
+					<a href="{$LAST}" title="{#last#|replace:' &raquo;':''}"><span class="glyphicon glyphicon-fast-forward"></span><span class="visible-lg-block visible-md-block">{#last#|replace:' &raquo;':''}</span></a>
+				{else}
+					<span class="text-muted"><span class="glyphicon glyphicon-fast-forward"></span><span class="visible-lg-block visible-md-block">{#last#|replace:' &raquo;':''}</span></span>
+				{/if}
+			</div>
+  
+	</div>
+	</div>
+</div>

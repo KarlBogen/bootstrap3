@@ -1,0 +1,41 @@
+{config_load file="$language/lang_$language.conf" section="checkout_shipping"}
+{config_load file="$language/lang_$language.conf" section="checkout_navigation"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="checkout_shipping"}
+<div id="checkoutnavigation" class="row list-group text-center mt">
+  <div class="col-xs-3 mb"><div class="list-group-item active"><h4>1.<span class="hidden-xs hidden-sm"> {#title_shipping#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_shipping#}</span></div></div>
+  <div class="col-xs-3 mb"><div class="list-group-item disabled"><h4>2.<span class="hidden-xs hidden-sm"> {#title_payment#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_payment#}</span></div></div>
+  <div class="col-xs-3 mb"><div class="list-group-item disabled"><h4>3.<span class="hidden-xs hidden-sm"> {#title_confirmation#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_confirmation#}</span></div></div>
+  <div class="col-xs-3 mb"><div class="list-group-item disabled"><h4>4.<span class="hidden-xs hidden-sm"> {#title_success#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_success#}</span></div></div>
+</div>
+
+<h1 class="well well-sm">{#heading_shipping#}</h1>
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+
+{$FORM_ACTION}
+<div class="row clearfix">
+	<div class="col-md-6 mb">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_shipping#}</h4>
+				<p>{#text_shipping#}</p>
+			</div>
+			{$SHIPPING_BLOCK}
+		</div>
+	</div>
+
+	<div class="col-md-6 mb">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_address#}</h4>
+				<p>{$ADDRESS_LABEL}</p>
+				{$BUTTON_ADDRESS|button}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix mb">
+	{if isset($BUTTON_BACK)}<div class="pull-left">{$BUTTON_BACK|button}</div>{/if}
+	<div class="pull-right">{$BUTTON_CONTINUE|button}</div>
+</div>
+{$FORM_END}

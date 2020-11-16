@@ -1,0 +1,73 @@
+{config_load file="$language/lang_$language.conf" section="login"}
+{config_load file="$language/lang_$language.conf" section="newsletter"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="login"}
+<h1 class="well well-sm">{#heading_login#}</h1>
+
+{if $info_message != ''}<div class="alert alert-warning">{$info_message}</div>{/if}
+{if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+
+<div class="row clearfix">
+	<div class="col-md-6 mb">
+  		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_returning#}</h4>
+				{$FORM_ACTION}
+				<p>{#text_returning#}</p>
+				{if $smarty.get.order_id}
+					{#text_after_login1#}
+				{elseif $smarty.get.review_prod_id}
+					{#text_after_login2#}
+				{else}
+					{#text_after_login#}
+				{/if}
+				<br />
+				<div class="form-group">
+					<label>{#text_email#}</label>
+					{$INPUT_MAIL|replace:"type=\"text\"":"type=\"email\""|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+				<div class="form-group">
+					<label>{#text_password#}</label>
+					{$INPUT_PASSWORD|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+				{if $VVIMG}
+					<div class="form-group">
+						<label>{#text_sec_code#}</label><br />
+						{$VVIMG}
+					</div>
+				{/if}
+				{if $INPUT_CODE}
+					<div class="form-group">
+						<label>{#text_sec_code#}</label>
+						{$INPUT_CODE|replace:'<input':'<input class="form-control form-control-sm" aria-label="code"'}
+					</div>
+				{/if}
+				<div class="pull-left"><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></div>
+				<div class="pull-right">{$BUTTON_LOGIN|button}</div>
+				{$FORM_END}
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6 mb">
+	{if $account_option == 'account' or $account_option == 'both'}
+  		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_new#}</h4>
+				<p>{#text_new#}</p>
+				<div class="pull-right">{$BUTTON_NEW_ACCOUNT|button}</div>
+  			</div>
+		</div>
+	{/if}
+
+	{if $account_option == 'both' or $account_option == 'guest'}
+  		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_guest#}</h4>
+				<p>{#text_guest#}</p>
+				<div class="pull-right">{$BUTTON_GUEST|button}</div>
+			</div>
+		</div>
+	{/if}
+	</div>
+</div>

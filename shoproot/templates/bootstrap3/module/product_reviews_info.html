@@ -1,0 +1,30 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="reviews"}
+<h1 class="well well-sm">{#heading_product_reviews#} {$PRODUCTS_NAME}</h1>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row clearfix">
+			<div class="col-xs-3">
+				{if $PRODUCTS_IMAGE != ''}
+					<a class="cbimages text-center" title="{$PRODUCTS_NAME|onlytext}" href="#" data-image-id="1" data-toggle="modal" data-target="#modal" data-title="{$PRODUCTS_NAME|onlytext}" data-image="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}">
+						<img class="unveil img-responsive" src="{$PRODUCTS_IMAGE}" data-src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" />
+					</a>
+					<noscript><a title="{$PRODUCTS_NAME|onlytext}" href="{$PRODUCTS_IMAGE|replace:"info_images":"popup_images"}"><img class="img-responsive" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></noscript>
+					<div class="small text-muted">{#zoomtext#}</div>
+				{/if}
+			</div>
+			<div class="col-xs-9">
+				<p><strong>{#text_date#}</strong> {$DATE}</p>
+				<p><strong>{#text_author#}</strong> {$AUTHOR}</p>
+				<p><strong>{#text_rating#}</strong>&nbsp;<span class="rating_stars">{$RATING|replace:".gif":".png"}</span></p>
+				<h4 class="mt">{#heading_product_reviews#} {$PRODUCTS_NAME}</h4>
+				<p class="small">{$REVIEWS_TEXT}</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+	<div class="pull-left">{$BUTTON_BACK|button}</div>
+	<div class="pull-right">{$PRODUCTS_BUTTON_DETAILS|button}</div>
+</div>

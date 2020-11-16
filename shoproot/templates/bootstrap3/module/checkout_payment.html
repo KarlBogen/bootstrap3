@@ -1,0 +1,125 @@
+{config_load file="$language/lang_$language.conf" section="checkout_payment"}
+{config_load file="$language/lang_$language.conf" section="checkout_navigation"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="checkout_payment"}
+
+<div id="checkoutnavigation" class="row list-group text-center mt">
+  {if isset($NO_SHIPPING)}
+  <div class="col-xs-4 mb"><div class="list-group-item active"><h4>1.<span class="hidden-xs hidden-sm"> {#title_payment#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_payment#}</span></div></div>
+  <div class="col-xs-4 mb"><div class="list-group-item disabled"><h4>2.<span class="hidden-xs hidden-sm"> {#title_confirmation#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_confirmation#}</span></div></div>
+  <div class="col-xs-4 mb"><div class="list-group-item disabled"><h4>3.<span class="hidden-xs hidden-sm"> {#title_success#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_success#}</span></div></div>
+  {else}
+  <div class="col-xs-3 mb"><a href="{$BUTTON_BACK_LINK}" class="list-group-item list-group-item-success"><h4>1.<span class="hidden-xs hidden-sm"> {#title_shipping#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_shipping#}</span></a></div>
+  <div class="col-xs-3 mb"><div class="list-group-item active"><h4>2.<span class="hidden-xs hidden-sm"> {#title_payment#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_payment#}</span></div></div>
+  <div class="col-xs-3 mb"><div class="list-group-item disabled"><h4>3.<span class="hidden-xs hidden-sm"> {#title_confirmation#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_confirmation#}</span></div></div>
+  <div class="col-xs-3 mb"><div class="list-group-item disabled"><h4>4.<span class="hidden-xs hidden-sm"> {#title_success#}</span></h4><span class="desc hidden-xs hidden-sm">{#desc_success#}</span></div></div>
+  {/if}
+</div>
+
+<h1 class="well well-sm">{#heading_payment#}</h1>
+{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+
+{$FORM_ACTION}
+<div class="row clearfix">
+	<div class="col-md-6 mb">
+		<div class="panel panel-default">
+		{if (!isset($GV_COVER) || $GV_COVER != 'true') && (!isset($NO_PAYMENT) || $NO_PAYMENT != 'true')}
+			<div class="panel-body">
+    			<h4>{#title_payment#}</h4>
+				<p>{#text_payment#}</p>
+			</div>
+			{$PAYMENT_BLOCK}
+			<div class="panel-body">
+				{$module_gift}
+			</div>
+		{elseif isset($GV_COVER) && $GV_COVER == 'true'}
+			<div class="panel-body">
+    			<h4>{#title_payment#}</h4>
+      			<div class="" id="gccover"><b>{#text_gccover#}</b></div>
+			</div>
+    	{elseif isset($NO_PAYMENT) && $NO_PAYMENT == 'true'}
+			<div class="panel-body">
+    			<h4>{#title_payment#}</h4>
+      			<div class="alert alert-info" id="nopayment"><b>{#text_nopayment#}</b></div>
+			</div>
+    	{/if}
+		</div>
+	</div>
+
+
+
+	<div class="col-md-6 mb">
+	{if $step2 != 'true'}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_address#}</h4>
+				<p>{$ADDRESS_LABEL}</p>
+				{$BUTTON_ADDRESS|button}
+			</div>
+		</div>
+	{/if}
+
+	{if $step2 != 'true'}
+		<div id="horizontalTab" class="panel panel-default">
+    	{if $smarty.const.DISPLAY_CONDITIONS_ON_CHECKOUT == 'true'}
+			<ul id="bs_tabs" class="nav nav-tabs panel-heading" role="tablist">
+				<li role="presentation"><a href="#tab1" role="tab" data-toggle="tab">{#title_comments_short#}</a></li>
+				<li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">{#title_agb#}</a></li>
+			</ul>
+			<div class="tab-content panel-body clearfix">
+				<div role="tabpanel" class="tab-pane active" id="tab1">
+					<h4 class="detailbox">{#title_comments_short#}</h4>
+					<div>{$COMMENTS|replace:'<textarea':'<textarea class="form-control"'}</div>
+				</div>
+				<div role="tabpanel" class="tab-pane active" id="tab2">
+					<h4 class="detailbox">{#title_agb#}</h4>
+					<div>{$AGB}</div>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="checkoutconditions checkbox">
+				{if defined($smarty.const.SIGN_CONDITIONS_ON_CHECKOUT)}
+					<label for="conditions">{if $smarty.const.SIGN_CONDITIONS_ON_CHECKOUT == 'true'}{$AGB_checkbox}&nbsp;{/if}<strong>{#text_accept_agb#}</strong>&nbsp;{$AGB_LINK}</label>
+				{else}
+					<label for="conditions">{$AGB_checkbox}&nbsp;<strong>{#text_accept_agb#}</strong>&nbsp;{$AGB_LINK}</label>
+				{/if}
+				</div>
+				{if isset($PRIVACY_LINK)}
+					<div class="checkoutconditions">
+						{if $PRIVACY_checkbox}<label for="privacy">{$PRIVACY_checkbox}&nbsp;{/if}<strong>{if $PRIVACY_checkbox}{#text_privacy_accept#}{else}{#text_privacy_notice#}{/if}</strong>&nbsp;{$PRIVACY_LINK}</label>
+					</div>
+				{/if}
+				{if isset($REVOCATION_checkbox)}
+					<div class="checkoutconditions checkbox">
+						<label for="revocation">{$REVOCATION_checkbox}&nbsp;<strong>{#text_accept_revocation#}</strong>&nbsp;{$REVOCATION_LINK}</label>
+					</div>
+				{/if}
+			</div>
+		{else}
+			<div class="panel-heading">
+				<h4 class="checkout">{#title_comments_short#}</h4>
+			</div>
+			<div class="panel-body">
+				<div class="checkoutcomment">{$COMMENTS|replace:'<textarea':'<textarea class="form-control"'}</div>
+				{if isset($PRIVACY_LINK)}
+					<div class="checkoutconditions">
+						{if $PRIVACY_checkbox}<label for="privacy">{$PRIVACY_checkbox}&nbsp;{/if}<strong>{if $PRIVACY_checkbox}{#text_privacy_accept#}{else}{#text_privacy_notice#}{/if}</strong>&nbsp;{$PRIVACY_LINK}</label>
+					</div>
+				{/if}
+				{if isset($REVOCATION_checkbox)}
+					<div class="checkoutconditions">
+						<label for="revocation">{$REVOCATION_checkbox}&nbsp;<strong>{#text_accept_revocation#}</strong>&nbsp;{$REVOCATION_LINK}</label>
+					</div>
+				{/if}
+			</div>
+		{/if}
+		</div>
+	{/if}
+	</div>
+</div>
+<div class="clearfix mb">
+	{if isset($BUTTON_BACK)}<div class="pull-left">{$BUTTON_BACK|button}</div>{/if}
+	<div class="pull-right">{$BUTTON_CONTINUE|button}</div>
+</div>
+{$FORM_END}

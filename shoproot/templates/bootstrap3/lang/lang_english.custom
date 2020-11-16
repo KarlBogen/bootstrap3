@@ -1,0 +1,58 @@
+# The lang_english.custom is only included, if "TEMPLATE_ENGINE" is set to "smarty_3" in "../config/config.php"!
+
+closex = 'X'
+close = 'Close'
+
+noscript = '<strong>JavaScript is disabled!</strong> Not all shop functions are available. Please check your browser settings.'
+
+heading_superfish = 'Categories'
+heading_mmenu = 'Menu'
+heading_responsivemenu = 'Menu'
+heading_sidebar = 'Sidebar'
+checkout_express_infolinktext = 'My quick purchase'
+
+zoomtext = 'For a larger view click on the thumbnail'
+products_desc = 'Products description'
+products_fsk18_check = 'This article can be purchased only after age verification.'
+products_manufacturer_model = 'MPN:'
+products_tags = 'Features'
+heading_products_tags = 'Product Features'
+
+first = '&laquo; first'
+back = '&laquo; back'
+overview = 'Overview'
+next = 'next &raquo;'
+last = 'last &raquo;'
+
+heading_miscellaneous = 'Payment methods'
+text_miscellaneous = 'The box can be changed under bootstrap4/boxes/box_miscellaneous.html. The language variables are in the file bootstrap4/lang/english/lang_english.custom.'
+
+ab_admin = 'Adminarea'
+ab_orders = 'Orders'
+ab_contentmanager = 'Content Manager'
+ab_customers = 'Customers'
+ab_category = 'Category/Products'
+ab_logoff = 'Logoff'
+ab_news = 'News'
+ab_offline = 'Shop Offline'
+ab_update = 'Update'
+ab_support = 'Support'
+ab_shop = 'Shop'
+ab_caching = 'Caching'
+
+ab_edit_content = 'Edit content'
+ab_edit_product = 'Edit product'
+ab_edit_attributes = 'Edit product attributes'
+ab_edit_category = 'Edit category'
+ab_edit_xsell = 'Edit cross selling'
+ab_edit_tags = 'Product features'
+
+info_reviews = 'Reviews:'
+info_review = 'Review:'
+
+heading_trustedshops = 'Trusted Shops'
+
+text_search_again = 'Sorry, we could not find a product matching your search request'
+
+listing_listview = 'List view'
+listing_boxview = 'Box view'

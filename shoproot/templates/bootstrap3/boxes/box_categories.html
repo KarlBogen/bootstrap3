@@ -1,0 +1,22 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{if isset($BOX_CONTENT) && $BOX_CONTENT != ''}
+<div class="box_category panel panel-default">
+    <div class="box_category_header panel-heading">
+		<span class="panel-title">{#heading_categories#}</span>
+	</div>
+	<ul id="categorymenu" class="list-group">
+    {$BOX_CONTENT}
+    {if $smarty.const.SPECIALS_CATEGORIES === true}
+        {if $smarty.const.SPECIALS_EXISTS === true}
+        <li class="list-group-item level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} active{/if}"><a class="list-group-item{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} active{/if}{if $smarty.const.WHATSNEW_SPECIALS_UPPERCASE === true} up{/if}" href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}">{#heading_specials#}</a></li>
+        {/if}
+    {/if}
+    {if $smarty.const.WHATSNEW_CATEGORIES === true}
+        {*if $smarty.const.WHATSNEW_EXISTS === true*}
+        <li class="list-group-item level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} active{/if}"><a class="list-group-item{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} active{/if}{if $smarty.const.WHATSNEW_SPECIALS_UPPERCASE === true} up{/if}" href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}">{#heading_whatsnew#}</a></li>
+        {*/if*}
+    {/if}
+    </ul>
+</div>
+{/if}

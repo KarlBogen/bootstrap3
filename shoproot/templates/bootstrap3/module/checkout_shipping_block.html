@@ -1,0 +1,63 @@
+    {if $FREE_SHIPPING}
+			<div class="panel-heading">
+					<h4 class="panel-title">
+				<div class="radio" style="margin:0;"><label>
+						{$FREE_SHIPPING_TITLE|onlytext}
+				</label>
+				</div>
+					</h4>
+			</div>
+				<div class="panel-body">
+					<div>{$FREE_SHIPPING_DESCRIPTION}</div>
+				</div>
+    {else}
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		{foreach name=outer item=module_data from=$module_content}
+        	{if $module_data.error != ''}
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="acc{$smarty.foreach.outer.iteration}" style="padding:0;">
+					<h4 class="panel-title">
+						<span role="button" data-toggle="collapse" data-parent="#accordion" data-target="#acc_{$smarty.foreach.outer.iteration}" aria-expanded="true" aria-controls="acc_{$smarty.foreach.outer.iteration}" style="padding:10px 15px;display:block;">
+							<span class="radio" style="margin:0;">
+								<label style="width:100%;">
+									{$module_data.module|onlytext}
+									<span class="more-less glyphicon glyphicon-triangle-top text-muted pull-right"></span>
+								</label>
+							</span>
+						</span>
+					</h4>
+				</div>
+				<div id="acc_{$smarty.foreach.outer.iteration}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acc{$smarty.foreach.outer.iteration}">
+					<div class="panel-body">
+						<div>{$module_data.error}</div>
+					</div>
+				</div>
+			</div>
+        	{else}
+				{foreach name=inner item=method_data from=$module_data.methods}
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="acc{$smarty.foreach.outer.iteration}-{$smarty.foreach.inner.iteration}" style="padding:0;">
+						<h4 class="panel-title">
+							<span role="button" data-toggle="collapse" data-parent="#accordion" data-target="#acc_{$smarty.foreach.outer.iteration}-{$smarty.foreach.inner.iteration}" aria-expanded="true" aria-controls="acc_{$smarty.foreach.outer.iteration}-{$smarty.foreach.inner.iteration}" style="padding:10px 15px;display:block;">
+								<span class="radio" style="margin:0;">
+									<label style="width:100%;">
+                    					{$method_data.radio_field}
+										{$module_data.module}
+										<span class="more-less glyphicon glyphicon-triangle-top text-muted pull-right"></span>
+										<span class="pull-right">{$method_data.price}&nbsp;&nbsp;</span>
+									</label>
+								</span>
+							</span>
+						</h4>
+					</div>
+					<div id="acc_{$smarty.foreach.outer.iteration}-{$smarty.foreach.inner.iteration}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acc{$smarty.foreach.outer.iteration}-{$smarty.foreach.inner.iteration}">
+						<div class="panel-body">
+							<div>{$module_data.icon} {$method_data.title}</div>
+						</div>
+					</div>
+				</div>
+          		{/foreach}
+        	{/if}
+		{/foreach}
+		</div>
+    {/if}

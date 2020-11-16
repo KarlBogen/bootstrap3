@@ -1,0 +1,92 @@
+{config_load file="$language/lang_$language.conf" section="new_products"}
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="wishlist"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="wishlist"}
+{if isset($BUTTON_CONTINUE)}
+	<h1 class="well well-sm">{#heading_wishlist#}</h1>
+	<p>{#text_empty_wishlist#}</p>
+	<div class="clearfix mb">
+		<div class="pull-right">{$BUTTON_CONTINUE|button}</div>
+	</div>
+{elseif isset($module_content)}
+	<h1 class="well well-sm">{#heading_wishlist#}</h1>
+	<div class="listingcontainer row clearfix">
+	{if $PRODUCT_LIST_BOX == false}
+		{foreach name=aussen item=module_data from=$module_content}
+			<div class="listingbox col-xs-6 col-sm-4 col-md-3">
+				<div class="lb_inner panel panel-default">
+					<div class="panel-body">
+						<div class="lb_image mb text-center">
+						{if $module_data.PRODUCTS_IMAGE != ''}
+							<a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a>
+							<noscript><a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a></noscript>
+						{else}
+							&nbsp;
+						{/if}
+						</div>
+						<div class="lb_title mb"><a href="{$module_data.PRODUCTS_LINK}"><strong>{$module_data.PRODUCTS_NAME}</strong></a></div>
+						<div class="lb_shipping mb small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-responsive" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+						<div class="lb_price text-right">
+							<span class="standard_price lead">{$module_data.PRODUCTS_PRICE}</span>
+							{if $module_data.PRODUCTS_VPE}<div class="lb_vpe text-muted small">{$module_data.PRODUCTS_VPE}</div>{/if}
+						</div>
+						<div class="lb_tax text-right text-muted small mb">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}</div>
+						<div class="lr_buttons">{$module_data.PRODUCTS_BUTTON_BUY_NOW_CART|stripTags:img|replace:'href':'class="btn btn-default btn-sm col-xs-5" href'|replace:'</a>':'<span class="glyphicon glyphicon-shopping-cart"></span></a>'}{$module_data.PRODUCTS_BUTTON_DELETE|stripTags:img|replace:'href':'class="btn btn-danger btn-sm col-xs-5 col-xs-offset-2" href'|replace:'</a>':'<span class="glyphicon glyphicon-trash"></span></a>'}</div>
+					</div>
+				</div>
+			</div>
+			{if $smarty.foreach.aussen.iteration is div by 4}
+				<div class="clearfix visible-md-block visible-lg-block"></div>
+			{/if}
+			{if $smarty.foreach.aussen.iteration is div by 3}
+				<div class="clearfix visible-sm-block"></div>
+			{/if}
+			{if $smarty.foreach.aussen.iteration is div by 2}
+				<div class="clearfix visible-xs-block"></div>
+			{/if}
+		{/foreach}
+	{else}
+		{foreach name=aussen item=module_data from=$module_content}
+			<div class="listingrow col-xs-12">
+				<div class="lr_inner panel panel-default row">
+					<div class="panel-body">
+						<div class="lr_image mb col-xs-12 col-sm-3 text-center">
+							{if $module_data.PRODUCTS_IMAGE != ''}
+								<a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a>
+								<noscript><a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a></noscript>
+							{else}
+								&nbsp;
+							{/if}
+						</div>
+						<div class="lr_content mb col-xs-8 col-sm-6">
+							<div class="lr_title mb"><a href="{$module_data.PRODUCTS_LINK}"><strong>{$module_data.PRODUCTS_NAME}</strong></a></div>
+							<div class="lr_desc_box mb">
+								{if is_array($module_data.ATTRIBUTES) && count($module_data.ATTRIBUTES) > 0}
+									<div class="lr_desc">
+										<ul class="attributes_list">
+											{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES}
+												<li><strong>{$item_data.NAME}:</strong> {$item_data.VALUE_NAME}</li>
+											{/foreach}
+										</ul>
+									</div>
+								{/if}
+								{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="lr_desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+							</div>
+							<div class="lr_shipping mb small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lr_shipping_image"><img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+						</div>
+						<div class="lr_price_box col-xs-4 col-sm-3">
+							<div class="lr_price text-right">
+								<span class="standard_price lead">{$module_data.PRODUCTS_PRICE}</span>
+								{if $module_data.PRODUCTS_VPE}<div class="lr_vpe text-muted small">{$module_data.PRODUCTS_VPE}</div>{/if}
+							</div>
+							<div class="lr_tax text-right text-muted small mb">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}</div>
+							<div class="lr_buttons">{$module_data.PRODUCTS_BUTTON_BUY_NOW_CART|stripTags:img|replace:'href':'class="btn btn-default btn-sm col-xs-5" href'|replace:'</a>':'<span class="glyphicon glyphicon-shopping-cart"></span></a>'}{$module_data.PRODUCTS_BUTTON_DELETE|stripTags:img|replace:'href':'class="btn btn-danger btn-sm col-xs-5 col-xs-offset-2" href'|replace:'</a>':'<span class="glyphicon glyphicon-trash"></span></a>'}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{/foreach}
+	{/if}
+	</div>
+{/if}

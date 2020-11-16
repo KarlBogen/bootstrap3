@@ -1,0 +1,96 @@
+{config_load file="$language/lang_$language.conf" section="address_book_process"}
+{config_load file="$language/lang_$language.conf" section="checkout_new_address"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="address_book_process"}
+{config_load file="lang_`$language`.section" section="checkout_new_address"}
+  <div class="panel panel-default">
+	<div class="panel-heading">
+    	<h4 class="panel-title">{#title_new_address#} <span class="small">({#text_must#})</span></h4>
+	</div>
+	<div class="panel-body">
+		<p>{#text_new_address#}</p>
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal">
+      		{if $gender == '1'}
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_gender#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_GENDER|replace:'<select':'<select class="form-control input-sm"'}
+				</div>
+			</div>
+			{/if}
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_firstname#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_FIRSTNAME|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_lastname#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_LASTNAME|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+			</div>
+			{if $company == '1'}
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_company#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_COMPANY|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+			</div>
+			{/if}
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_street#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_STREET|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+			</div>
+			{if $suburb == '1'}
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_suburb#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_SUBURB|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+			</div>
+			{/if}
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_code#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_CODE|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_city#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_CITY|replace:'<input':'<input class="form-control input-sm"'}
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">{#text_country#}</label>
+				<div class="col-sm-8 stern">
+					{$SELECT_COUNTRY|replace:'<select':'<select class="form-control input-sm"'}
+				</div>
+			</div>
+			{if $state == '1'}
+      
+			<div class="form-group"{if $display_state} {$display_state}{/if}>
+				<label class="col-sm-4 control-label">{#text_state#}</label>
+				<div class="col-sm-8 stern">
+					{$INPUT_STATE}
+				</div>
+			</div>
+			{/if}
+		</div>
+	</div>
+    {if $new == '1'}
+	<div class="panel-footer">
+			<div class="checkbox">
+				<label>
+					{$CHECKBOX_PRIMARY}
+					{#text_standard#}
+				</label>
+			</div>
+	</div>
+    {/if}
+</div>

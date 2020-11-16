@@ -1,0 +1,189 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{if isset($box_ADMIN)}<div class="adminspacer"></div>{$box_ADMIN}{/if}
+{* BEGINN Hauptcontainer innerhalb body *}
+<div id="container" class="{$smarty.const.BOOTSTRAP_THEME}">
+	{* BEGINN Menü, Top nav mit Logo für große Bildschirme*}
+	{if $smarty.const.MMENU === true}{$box_CATEGORIES_MMENU}{/if}
+	<div class="top nav navbar-{$smarty.const.TOP1_NAVBAR}">
+		<div id="layout_navbar" class="container">
+  			<div id="logo1" class="pull-left hidden-xs"><a href="{$index}" title="{#link_index#} &bull; {$store_name}"><img class="img-responsive center-block" src="{$tpl_path}{$smarty.const.SHOP_LOGO}" alt="{$store_name}" /></a></div>
+			{if isset($box_LANGUAGES) && trim($box_LANGUAGES) != ''}{$box_LANGUAGES}{/if}
+			<ul class="nav nav-pills pull-right">
+				<li class="{if isset($home) && $home == true}active{/if}"><a href="{$index}"><span class="glyphicon glyphicon-home"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_index#}</span></a></li>
+				{if isset($account)}<li{if strstr($smarty.server.PHP_SELF, 'account') && !strstr ($smarty.server.PHP_SELF, 'create_account')} class="active"{/if}><a href="{$account}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_account#}</span></a></li>{/if}
+				{if isset($smarty.session.customer_id)}
+					<li{if strstr ($smarty.server.PHP_SELF, 'logoff')} class="active"{/if}><a href="{$logoff}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_logoff#}</span></a></li>
+				{else}
+					<li{if strstr($smarty.server.PHP_SELF, 'create_account')} class="active"{/if}><a href="{$create_account}"><span class="glyphicon icon-user-plus" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#new_customer#}</span></a></li>
+					<li{if strstr($smarty.server.PHP_SELF, 'login')} class="active"{/if}><a href="{$login}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_login#}</span></a></li>
+				{/if}
+			</ul>
+			<ul class="nav nav-pills pull-right" style="clear:right;">
+				<li{if strstr ($smarty.server.PHP_SELF, 'checkout')} class="active"{/if}><a href="{$checkout}"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;<strong>{#link_checkout#}</strong></span></a></li>
+				{if isset($box_WISHLIST)}<li class="wishlist">{$box_WISHLIST}</li>{/if}
+				{if isset($box_CART)}<li class="cart">{$box_CART}</li>{/if}
+				</ul>
+		</div>
+	</div>
+	{* ENDE top nav *}
+	{* BEGINN Maincontainer*}
+	<div id="main_container" class="container">
+	{* BEGINN Javascript deaktiviert *}
+		{if $smarty.const.SHOW_JS_DISABLED === true}<noscript><div class="alert alert-warning">{#noscript#}</div></noscript>{/if}
+	{* ENDE Javascript deaktiviert *}
+		{* BEGINN Logo für kleine Bildschirme, Kundeninfo und Suche *}
+		<div id="layout_logo" class="row clearfix">
+  			<div id="logo2" class="visible-xs mb"><a href="{$index}" title="{#link_index#} &bull; {$store_name}"><img src="{$tpl_path}{$smarty.const.SHOP_LOGO}" class="img-responsive center-block" alt="{$store_name}" /></a></div>
+    		{if isset($box_INFOBOX)}{$box_INFOBOX}{/if}
+  			{if isset($box_SEARCH)}<div id="search" class="col-xs-12 col-sm-6 pull-right mb">{$box_SEARCH}</div>{/if}
+		</div>
+		{* ENDE Logo *}
+		{* BEGINN Superfish, Responsivemenü- oder Mmenü- und Sidebarlinks*}
+		<nav id="navbar" class="top2 navbar navbar-{$smarty.const.TOP2_NAVBAR}{if $smarty.const.SUPERFISHMENU === false} visible-xs visible-sm{/if}">
+			<div class="canvasmenu container-fluid">
+				{if $smarty.const.MMENU == true}<a class="navbar-brand" href="#menu"><span class="visible-xs visible-sm pull-left"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>&nbsp;&nbsp;</span>{#heading_mmenu#}</a>{/if}
+				{if $smarty.const.RESPONSIVEMENU == true && $smarty.const.MMENU == false}<a class="navbar-brand menu-btn menu-btn--left pull-left" href="#"><span class="visible-xs visible-sm"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>&nbsp;&nbsp;{#heading_responsivemenu#}</span></a>{/if}
+				{if !isset($fullcontent) && $fullcontent != true}<a class="navbar-brand menu-btn menu-btn--right pull-right" href="#"><span class="visible-xs visible-sm">{#heading_sidebar#}&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></span></a>{/if}
+			</div>
+			{if $smarty.const.SUPERFISHMENU === true}
+			<div class="fullmenu container-fluid">
+				<div class="navbar-header"><a class="navbar-brand" href="{$index}"><span class="glyphicon glyphicon-home"></span></a></div>
+				{$box_CATEGORIES_SUPERFISH}
+			</div>
+			{/if}
+		</nav>
+		{* ENDE Superfish, Responsivemenü und Mmenü *}
+		{* BEGINN Contentteil*}
+		<div id="content" class="row">
+{if isset($home) && $home == true}
+            {* BEGINN col_left für Startseite *}
+			<div id="col_left" class="col-xs-12 col-md-3 pushy pushy-right">
+				{if isset($box_CATEGORIES)}{$box_CATEGORIES}{/if}
+				{if isset($box_ADD_QUICKIE)}{$box_ADD_QUICKIE}{/if}
+				{if isset($box_LOGIN)}{$box_LOGIN}{/if}
+				{if isset($box_WHATSNEW)}{$box_WHATSNEW}{/if}
+				{if isset($box_SPECIALS)}{$box_SPECIALS}{/if}
+				{if isset($box_LAST_VIEWED)}{$box_LAST_VIEWED}{/if}
+				{if isset($box_REVIEWS)}{$box_REVIEWS}{/if}
+				{if isset($box_MANUFACTURERS)}{$box_MANUFACTURERS}{/if}
+				{if isset($box_MANUFACTURERS_INFO)}{$box_MANUFACTURERS_INFO}{/if}
+				{if isset($box_CURRENCIES)}{$box_CURRENCIES}{/if}
+				{if isset($box_HISTORY)}{$box_HISTORY}{/if}
+				{if isset($box_TRUSTEDSHOPS)}{$box_TRUSTEDSHOPS}{/if}
+			</div>
+			{* ENDE col_left *}
+			{* BEGINN col_right *}
+			<div id="col_right" class="col-xs-12 col-md-9">
+				{* BEGINN Slider Karusell - *}
+				{if isset($SLIDER)}
+				<div id="myCarousel" class="carousel slide">
+					<ol class="carousel-indicators">
+						{foreach name=aussen item=slider from=$SLIDER}<li data-target="#myCarousel" data-slide-to="{$smarty.foreach.aussen.iteration - 1}"{if $smarty.foreach.aussen.first} class="active"{/if}></li>{/foreach}
+					</ol>
+					<div class="carousel-inner" role="listbox">
+						{foreach name=aussen item=slider from=$SLIDER}
+						<div class="item{if $smarty.foreach.aussen.first} active{/if}">{$slider.IMAGE}
+							<div class="container"><div class="carousel-caption">{$slider.TEXT}</div></div>
+						</div>
+						{/foreach}
+					</div>
+				</div>
+				{/if}
+				{* ENDE Slider Karusell *}
+				{* BEGINN Banner *}
+      				{if isset($BANNER)}<div class="content_banner clearfix">{$BANNER}</div>{/if}
+				{* ENDE Banner *}
+				{if isset($main_content)}{$main_content}{/if}
+				{*if $bestseller*}{if isset($box_BESTSELLERS)}{$box_BESTSELLERS}{/if}{*/if*}
+			</div>
+			{* ENDE col_right *}
+			{* BEGINN col_full *}
+{elseif isset($fullcontent) && $fullcontent == true}
+			<div id="col_full" class="container">
+				{if isset($navtrail)}<div id="breadcrumb" class="well-sm"><span class="breadcrumb_info">{#text_here#}</span>{$navtrail} </div>{/if}
+				{if isset($main_content)}{$main_content}{/if}
+				{if $bestseller}{if isset($box_BESTSELLERS)}{$box_BESTSELLERS}{/if}{/if}
+			</div>
+			{* ENDE col_full *}
+{else}
+            {* BEGINN col_left nicht Startseite *}
+			<div id="col_left" class="col-xs-12 col-md-3 pushy pushy-right">
+				{if isset($box_CATEGORIES)}{$box_CATEGORIES}{/if}
+				{if isset($box_ADD_QUICKIE)}{$box_ADD_QUICKIE}{/if}
+				{if isset($box_LOGIN)}{$box_LOGIN}{/if}
+				{if isset($box_WHATSNEW)}{$box_WHATSNEW}{/if}
+				{if isset($box_SPECIALS)}{$box_SPECIALS}{/if}
+				{if isset($box_LAST_VIEWED)}{$box_LAST_VIEWED}{/if}
+				{if isset($box_REVIEWS)}{$box_REVIEWS}{/if}
+				{if isset($box_MANUFACTURERS)}{$box_MANUFACTURERS}{/if}
+				{if isset($box_MANUFACTURERS_INFO)}{$box_MANUFACTURERS_INFO}{/if}
+				{if isset($box_CURRENCIES)}{$box_CURRENCIES}{/if}
+				{if isset($box_HISTORY)}{$box_HISTORY}{/if}
+				{if isset($box_TRUSTEDSHOPS)}{$box_TRUSTEDSHOPS}{/if}
+			</div>
+			{* ENDE col_left *}
+			{* BEGINN col_right *}
+			<div id="col_right" class="col-xs-12 col-md-9">
+				{if isset($navtrail)}<div id="breadcrumb" class="well-sm"><span class="breadcrumb_info">{#text_here#}</span>{$navtrail}</div>{/if}
+				{if isset($main_content)}{$main_content}{/if}
+				{if isset($box_BESTSELLERS)}{$box_BESTSELLERS}{/if}
+			</div>
+			{* ENDE col_right *}
+{/if}
+		</div>
+		{* ENDE Contentteil*}
+	</div>
+	{* ENDE Maincontainer*}
+	{* BEGINN Responsivmenü - nicht sichtbar*}
+		{if $smarty.const.RESPONSIVEMENU === true && $smarty.const.MMENU === false}{$box_CATEGORIES_RESPONSIVEMENU}{/if}
+	{* BEGINN FOOTER *}
+	<div id="layout_footer" class="container-fluid navbar-{$smarty.const.FOOTER_NAVBAR}">
+  		<div class="container">
+			<div id="layout_footer_inner" class="row">
+				{if isset($box_CONTENT)}<div class="col-md-3 col-sm-6 col-xs-12">{$box_CONTENT} </div>{/if}
+				{if isset($box_INFORMATION)}<div class="col-md-3 col-sm-6 col-xs-12">{$box_INFORMATION} </div>{/if}
+				{* Setzt die Floats der SM-Spalten zurück, falls ihr Inhalt nicht gleich hoch ist *}
+				<div class="clearfix visible-sm-block"></div>
+				{if isset($box_MISCELLANEOUS)}<div class="col-md-3 col-sm-6 col-xs-12">{$box_MISCELLANEOUS} </div>{/if}
+				{if isset($box_NEWSLETTER)}<div class="col-md-3 col-sm-6 col-xs-12">{$box_NEWSLETTER} </div>{/if}
+			</div>
+		</div>
+		<div class="mod_copyright text-muted text-center small">{$smarty.const.TITLE} &copy; {$smarty.now|date_format:"%Y"} | Template &copy; {$smarty.now|date_format:"%Y"} by Karl</div>
+	</div>
+	{* ENDE FOOTER *}
+	<a href="#" class="go2top btn btn-default"><span class="glyphicon glyphicon-chevron-up"></span></a>
+	<div class="site-overlay--left"></div>
+	<div class="site-overlay--right"></div>
+	<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">{#closex#}</span><span class="sr-only">{#close#}</span></button>
+                	<h4 class="modal-title text-center">&nbsp;</h4>
+            	</div>
+            	<div class="modal-body">
+            	</div>
+            	<div class="modal-footer">
+					<a id="show-previous-image" class="left carousel-control" role="button"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+					<a id="show-next-image"  class="right carousel-control" role="button"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+					<span class="counter small pull-left" style="padding:6px 12px;"></span>
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{#close#}</button>
+            	</div>
+        	</div>
+	    </div>
+	</div>
+</div>
+{* ENDE Hauptcontainer innerhalb body *}
+{if ($smarty.const.TRACKING_COUNT_ADMIN_ACTIVE == 'true' && $smarty.session.customers_status.customers_status_id == '0') || $smarty.session.customers_status.customers_status_id != '0'}
+  {if $smarty.const.TRACKING_PIWIK_ACTIVE == 'true'}
+    {piwik url=$smarty.const.TRACKING_PIWIK_LOCAL_PATH id=$smarty.const.TRACKING_PIWIK_ID goal=$smarty.const.TRACKING_PIWIK_GOAL}
+  {/if}
+  {if $smarty.const.TRACKING_GOOGLEANALYTICS_ACTIVE == 'true'}
+    {googleanalytics account=$smarty.const.TRACKING_GOOGLEANALYTICS_ID}
+  {/if}
+  {if $smarty.const.TRACKING_FACEBOOK_ACTIVE == 'true'}
+    {facebook id=$smarty.const.TRACKING_FACEBOOK_ID}
+  {/if}
+{/if}

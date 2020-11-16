@@ -1,0 +1,16 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+<div class="box1 panel panel-default">
+    <div class="box1_header panel-heading">
+		<span class="panel-title">{#heading_add_a_quickie#}</span>
+	</div>
+	<div class="panel-body">
+		<p class="small">{#text_quickie#}</p>
+		{$FORM_ACTION}
+			<div class="input-group">
+				{$INPUT_FIELD}
+				<span class="input-group-btn">{$SUBMIT_BUTTON}</span>
+			</div>
+		{$FORM_END}
+	</div>
+</div>

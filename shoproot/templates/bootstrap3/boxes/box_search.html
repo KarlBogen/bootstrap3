@@ -1,0 +1,12 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{$FORM_ACTION}
+<div class="input-group">
+{if isset($CATEGORIES)}<span class="input-group-btn" style="width:0px;">{$CATEGORIES}</span>{/if}
+{$INPUT_SEARCH}
+<span class="input-group-btn">{$BUTTON_SUBMIT|button}</span>
+</div>
+{$FORM_END}
+<div class="suggestionsBox well well-sm pull-right" id="suggestions" style="display:none;">
+  <div class="suggestionList text-center" id="autoSuggestionsList">&nbsp;</div>
+</div>

@@ -1,0 +1,39 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+  {if $empty == 'false'}
+  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} href="{$LINK_CART}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;<span class="hidden-xs">{#heading_cart#}&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></span><span class="visible-xs-inline">(</span><strong>&nbsp;{$PRODUCTS}</strong>&nbsp;<span class="visible-xs-inline">)</span><span class="hidden-xs">{#text_article#}{* &nbsp;&bull;&nbsp;{#text_total#}:<strong>{$TOTAL}</strong>*}</span></a>
+  {else}
+  <a {if $deny_cart neq 'true'}id="toggle_cart"{/if} href="{$LINK_CART}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;<span class="hidden-xs">{#heading_cart#}&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></span><span class="visible-xs-inline">(</span><strong>&nbsp;0</strong>&nbsp;<span class="visible-xs-inline">)</span><span class="hidden-xs">{#text_article#}{* &nbsp;&bull;&nbsp;{#text_total#}:<strong>0,00 {$smarty.session.currency}</strong>*}</span></a>
+  {/if}
+
+<div class="dropdown-menu dropdown-menu-right toggle_cart panel panel-default">
+{if $deny_cart neq 'true'}
+  {if $ACTIVATE_GIFT == 'true'}
+    {if isset($GV_AMOUNT)}
+      <div class="panel-heading"><strong>{#voucher_balance#}</strong>&nbsp;{$GV_AMOUNT}</div>
+    {/if}
+  {/if}
+  {if $empty == 'false'}
+    <div class="panel-heading">{#text_full_cart#}</div>
+    <div class="panel-body">
+    <ul class="list-group">
+    {foreach name=aussen item=products_data from=$products}
+      <li class="list-group-item"><a href="{$products_data.LINK}">{$products_data.QTY}&nbsp;x&nbsp;{$products_data.NAME|truncate:40:"...":true}</a><span class="pull-right">{$products_data.BUTTON_DELETE}</span></li>
+    {/foreach}
+    </ul>
+    </div>
+    <div class="panel-footer text-center">
+      <a class="btn btn-default btn-xs" href="{$LINK_CHECKOUT}"><strong>{#heading_checkout#}&nbsp;&raquo;</strong></a>&nbsp;&nbsp;
+      <a class="btn btn-default btn-xs" href="{$LINK_CART}"><strong>{#heading_cart#}&nbsp;&raquo;</strong></a>
+    </div>
+  {else}
+    <div class="panel-heading text-center"><strong>{#text_empty_cart#}</strong></div>
+    {*
+    <div class="panel-footer text-center">
+      <a class="btn btn-default btn-xs" href="{$LINK_CHECKOUT}"><strong>{#heading_checkout#}&nbsp;&raquo;</strong></a>&nbsp;&nbsp;
+      <a class="btn btn-default btn-xs" href="{$LINK_CART}"><strong>{#heading_cart#}&nbsp;&raquo;</strong></a>
+    </div>
+    *}
+  {/if}
+{/if}
+</div>

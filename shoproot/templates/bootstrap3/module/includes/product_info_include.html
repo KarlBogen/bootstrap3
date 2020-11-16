@@ -1,0 +1,74 @@
+{if $smarty.const.PRODUCT_INFO_BOX == 'true'}
+{* BOXANSICHT *}
+	<div class="listingbox col-xs-6 col-sm-4">
+		<div class="lb_inner panel panel-default">
+			<div class="panel-body">
+				<div class="lb_image mb text-center">
+					{if $module_data.PRODUCTS_IMAGE != ''}
+					<a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a>
+					<noscript><a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a></noscript>
+					{else}
+					&nbsp;
+					{/if}
+				</div>
+				<div class="lb_title mb"><a href="{$module_data.PRODUCTS_LINK}"><strong>{$module_data.PRODUCTS_NAME}</strong></a></div>
+				<div class="lb_shipping mb small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-responsive" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+				<div class="lb_price text-right">
+					{foreach name=inner item=price_data from=$module_data.PRODUCTS_PRICE_ARRAY}
+						{include file="module/includes/price_box.html"}
+					{/foreach}
+					{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+						{if $module_data.PRODUCTS_VPE}<div class="lb_vpe text-muted small">{$module_data.PRODUCTS_VPE}</div>{/if}
+					{/if}
+				</div>
+				{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+				<div class="lb_tax text-right text-muted small mb">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}</div>
+				{/if}
+				<div class="lb_buttons text-center">{if $module_data.PRODUCTS_BUTTON_BUY_NOW || ($module_data.PRODUCTS_FSK18 != '0' && $smarty.const.SHOW_BUTTON_BUY_NOW != 'false')}{$module_data.PRODUCTS_BUTTON_BUY_NOW|button}&nbsp;&nbsp;{/if}{if $module_data.PRODUCTS_LINK_WISHLIST_NOW}<a class="btn btn-info btn-sm" href="{$module_data.PRODUCTS_LINK_WISHLIST_NOW}"><span class="glyphicon glyphicon-star"></span></a>&nbsp;&nbsp;{/if}{$module_data.PRODUCTS_BUTTON_DETAILS|button}</div>
+		</div>
+		</div>
+	</div>
+	{if ($schluessel+1) is div by 3}
+	<div class="clearfix visible-sm-block visible-md-block visible-lg-block"></div>
+	{/if}
+	{if ($schluessel+1) is div by 2}
+	<div class="clearfix visible-xs-block"></div>
+	{/if}
+
+{else}
+{* ROWANSICHT *}
+	<div class="listingrow col-xs-12">
+		<div class="lr_inner panel panel-default">
+			<div class="panel-body row">
+				<div class="lr_image mb col-xs-12 col-sm-3 text-center">
+					{if $module_data.PRODUCTS_IMAGE != ''}
+					<a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive unveil" src="{$tpl_path}css/images/loading.gif" data-src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a>
+					<noscript><a href="{$module_data.PRODUCTS_LINK}"><img class="img-responsive" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME|onlytext}" title="{$module_data.PRODUCTS_NAME|onlytext}" /></a></noscript>
+					{else}
+					&nbsp;
+					{/if}
+				</div>
+				<div class="lr_content mb col-xs-8 col-sm-6">
+					<div class="lr_title mb"><a href="{$module_data.PRODUCTS_LINK}"><strong>{$module_data.PRODUCTS_NAME}</strong></a></div>
+					{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="lr_desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+					<div class="lr_shipping mb small">{if $module_data.PRODUCTS_SHIPPING_NAME}{#text_shippingtime#} {if $module_data.PRODUCTS_SHIPPING_IMAGE}<span class="lb_shipping_image"><img class="img-responsive" src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME|onlytext}" /></span>{/if}{$module_data.PRODUCTS_SHIPPING_NAME_LINK}{else}&nbsp;{/if}</div>
+				</div>
+				<div class="lr_price_box col-xs-4 col-sm-3">
+					<div class="lr_price text-right">
+						{foreach name=inner item=price_data from=$module_data.PRODUCTS_PRICE_ARRAY}
+							{include file="module/includes/price_box.html"}
+						{/foreach}
+						{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+							{if $module_data.PRODUCTS_VPE}<div class="lr_vpe text-muted small">{$module_data.PRODUCTS_VPE}</div>{/if}
+						{/if}
+					</div>
+					{if $module_data.PRODUCTS_PRICE_ARRAY.0.PRODUCTS_PRICE_FLAG != 'NotAllowed'}
+						<div class="lr_tax text-right text-muted small mb">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}</div>
+						<div class="lr_buttons text-center">{if $module_data.PRODUCTS_BUTTON_BUY_NOW || ($module_data.PRODUCTS_FSK18 != '0' && $smarty.const.SHOW_BUTTON_BUY_NOW != 'false')}{$module_data.PRODUCTS_BUTTON_BUY_NOW|button}&nbsp;&nbsp;{/if}{if $module_data.PRODUCTS_LINK_WISHLIST_NOW}<a class="btn btn-info btn-sm" href="{$module_data.PRODUCTS_LINK_WISHLIST_NOW}"><span class="glyphicon glyphicon-star"></span></a>&nbsp;&nbsp;{/if}{$module_data.PRODUCTS_BUTTON_DETAILS|button}</div>
+					{/if}
+					<div class="lr_buttons text-center">{if $module_data.PRODUCTS_BUTTON_BUY_NOW || ($module_data.PRODUCTS_FSK18 != '0' && $smarty.const.SHOW_BUTTON_BUY_NOW != 'false')}{$module_data.PRODUCTS_BUTTON_BUY_NOW|button}&nbsp;&nbsp;{/if}{if $module_data.PRODUCTS_LINK_WISHLIST_NOW}<a class="btn btn-info btn-sm" href="{$module_data.PRODUCTS_LINK_WISHLIST_NOW}"><span class="glyphicon glyphicon-star"></span></a>&nbsp;&nbsp;{/if}{$module_data.PRODUCTS_BUTTON_DETAILS|button}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/if}

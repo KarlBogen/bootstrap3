@@ -1,0 +1,59 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {foreach name=outer item=gift_data from=$module_gift}
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="gift_acc{$smarty.foreach.outer.iteration}" style="padding:0;">
+				<h4 class="panel-title">
+					<span role="button" data-toggle="collapse" data-parent="#accordion" data-target="#gift_acc_{$smarty.foreach.outer.iteration}" aria-expanded="true" aria-controls="gift_acc_{$smarty.foreach.outer.iteration}" style="padding:10px 15px;display:block;">
+						<span class="radio checkbox" style="margin:0;">
+							<label style="width:100%;">
+								{$gift_data.selection}
+								{$gift_data.module|onlytext}
+							<span class="more-less glyphicon glyphicon-triangle-top text-muted pull-right"></span>
+							<span class="pull-right">{$gift_data.credit_amount}&nbsp;&nbsp;</span>
+							</label>
+						</span>
+					</span>
+				</h4>
+			</div>
+			<div id="gift_acc_{$smarty.foreach.outer.iteration}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="gift_acc{$smarty.foreach.outer.iteration}">
+				<div class="panel-body">
+					<div>{if $gift_data.description != ''}{$gift_data.description}<br />{/if}{$credit_amount_payment_info}</div>
+				</div>
+			</div>
+		</div>
+    {/foreach}
+	{foreach name=outer item=module_data from=$module_content}
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="acc{$smarty.foreach.outer.iteration}" style="padding:0;">
+				<h4 class="panel-title">
+					<span role="button" data-toggle="collapse" data-parent="#accordion" data-target="#acc_{$smarty.foreach.outer.iteration}" aria-expanded="true" aria-controls="acc_{$smarty.foreach.outer.iteration}" style="padding:10px 15px;display:block;">
+						<span class="radio checkbox" style="margin:0;">
+							<label style="width:100%;">
+								{$module_data.selection}
+								{$module_data.module|onlytext}
+							<span class="more-less glyphicon glyphicon-triangle-top text-muted pull-right"></span>
+							<span class="pull-right">{$module_data.module_cost}&nbsp;&nbsp;</span>
+							</label>
+						</span>
+					</span>
+				</h4>
+			</div>
+			<div id="acc_{$smarty.foreach.outer.iteration}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="acc{$smarty.foreach.outer.iteration}">
+				<div class="panel-body">
+					{if $module_data.description}{$module_data.description}<br />{/if}
+					{if $module_data.error != ''}
+						{$module_data.error}<br />
+					{elseif $module_data.fields}
+						<div class="paymentmoduledata form-group">
+							{foreach name=inner item=method_data from=$module_data.fields}
+								<div class="title small"><strong>{$method_data.title}</strong></div>
+								<div class="field mb">{$method_data.field|replace:'<input':'<input class="form-control input-sm"'|replace:'<textarea':'<textarea class="form-control input-sm"'|replace:'<select':'<select class="form-control input-sm"'}</div>
+							{/foreach}
+						</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+	{/foreach}
+</div>
+<div class="pp-message"></div>

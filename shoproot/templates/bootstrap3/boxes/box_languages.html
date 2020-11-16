@@ -1,0 +1,12 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="lang_`$language`.custom"}
+{if isset($BOX_CONTENT)}
+<ul class="nav nav-pills pull-right">
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$CUR_LINK_TEXT}&nbsp;&nbsp;<span class="caret"></span></a>
+<ul class="dropdown-menu dropdown-menu-right">
+{$BOX_CONTENT}
+</ul>
+</li>
+</ul>
+{/if}

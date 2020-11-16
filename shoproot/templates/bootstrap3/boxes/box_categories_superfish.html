@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{if $BOX_CONTENT != ''}
+{$BOX_CONTENT}
+      {if $smarty.const.SPECIALS_CATEGORIES === true}
+        {if $smarty.const.SPECIALS_EXISTS === true}
+          <li class="men level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_SPECIALS)} active{/if}"><a href="{$smarty.const.FILENAME_SPECIALS|xtc_href_link}"{if $smarty.const.WHATSNEW_SPECIALS_UPPERCASE === true} class="up"{/if}>{#heading_specials#}</a></li>
+        {/if}
+      {/if}
+      {if $smarty.const.WHATSNEW_CATEGORIES === true}
+        {*if $smarty.const.WHATSNEW_EXISTS === true*}
+          <li class="men level1{if strstr($smarty.server.PHP_SELF, $smarty.const.FILENAME_PRODUCTS_NEW)} active{/if}"><a href="{$smarty.const.FILENAME_PRODUCTS_NEW|xtc_href_link}"{if $smarty.const.WHATSNEW_SPECIALS_UPPERCASE === true} class="up"{/if}>{#heading_whatsnew#}</a></li>
+        {*/if*}
+      {/if}
+	</ul>{/if}

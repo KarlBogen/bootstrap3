@@ -1,0 +1,20 @@
+{if isset($CONTENT_HEADING)}<h1 class="well well-sm">{$CONTENT_HEADING}</h1>{/if}
+<div class="row clearfix mb">
+<div class="col-xs-12">
+	{if isset($file)}
+		{$CONTENT_BODY}
+		{$file}
+	{else}
+		<div class="pull-left">
+			{if isset($SUB_CONTENT_LISTING)}<div class="subcontent  col-sm-4 pull-right">{$SUB_CONTENT_LISTING}</div>{/if}
+			{$CONTENT_BODY}
+		</div>
+	{/if}
+	{if isset($MODULE_conent_manager_media)}
+		{$MODULE_conent_manager_media}
+	{/if}
+</div>
+</div>
+<div class="clearfix mb">
+	<div class="pull-left">{$BUTTON_CONTINUE|button}</div>
+</div>

@@ -1,0 +1,112 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="account"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="account"}
+<h1 class="well well-sm">{#heading_account#}</h1>
+{if $error_message}<div class="alert alert-warning">{$error_message}</div>{/if}
+{if $success_message}<div class="alert alert-success">{$success_message}</div>{/if}
+<div class="row clearfix">
+	<div class="col-md-6 mb">
+  		<div class="panel panel-default">
+			<div class="panel-body">
+			{if !$products_history || !isset($smarty.session.customer_id)}
+				<h4>{#title_welcome#}</h4>
+				{if #text_welcome#}
+					<p>{#text_welcome#}</p>
+				{/if}
+				{if $LINK_LOGIN}
+					<p><a class="btn btn-sm btn-default" href="{$LINK_LOGIN}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{#text_login#}</a></p>
+				{/if}
+			{/if}
+			{if isset($smarty.session.customer_id)}
+				<h4>{#title_account#}</h4>
+				<div class="row">
+        			<div class="col-sm-6 mb"><a class="btn btn-sm btn-default btn-block" href="{$LINK_EDIT}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;{#text_edit#}</a></div>
+        			<div class="col-sm-6 mb"><a class="btn btn-sm btn-info btn-block" href="{$LINK_ADDRESS}"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;{#text_address#}</a></div>
+        			{if $LINK_PASSWORD}
+          				<div class="col-sm-6 mb"><a class="btn btn-sm btn-warning btn-block" href="{$LINK_PASSWORD}"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;{#text_password#}</a></div>
+					{/if}
+					{if $LINK_DELETE}
+						<div class="col-sm-6 mb"><a class="btn btn-sm btn-danger btn-block" href="{$LINK_DELETE}"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;{#text_delete#}</a></div>
+					{/if}
+				</div>
+				{if isset($LINK_EXPRESS)}
+					<div class="row">
+						<div class="col-lg-6 mb"><a class="btn btn-sm btn-primary btn-block" href="{$LINK_EXPRESS}"><span class="glyphicon icon-opencart"></span>&nbsp;&nbsp;{#text_express_checkout#}</a></div>
+					</div>
+				{/if}
+			{/if}
+			</div>
+		</div>
+
+		{if $order_content}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_orders#}</h4>
+			</div>
+			<div class="list-group">
+			{foreach name=aussen item=order_data from=$order_content}
+				<div class="list-group-item">
+					<span class="pull-right">
+						{if isset($order_data.BUTTON_CART_EXPRESS)}{$order_data.BUTTON_CART_EXPRESS|button}{/if}
+						{$order_data.BUTTON_CART|button}
+					</span>
+					<strong><a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}</a> / {#order_nr#}{$order_data.ORDER_ID}</strong><br />
+					<strong>{#order_total#}</strong>{$order_data.ORDER_TOTAL}<br />
+					<strong>{#order_status#}</strong>{$order_data.ORDER_STATUS}<br />
+					{if count($order_data.TRACKING) > 0}
+						{foreach name=aussen item=tracking_data from=$order_data.TRACKING}
+							{#label_tracking#} <a target="_blank" href="{$tracking_data.tracking_link}">{$tracking_data.parcel_id}</a><br />
+						{/foreach}
+					{/if}
+				</div>
+			{/foreach}
+			</div>
+			<div class="panel-body">
+				<p><a href="{$LINK_ALL}">{#text_all#}</a></p>
+			</div>
+		</div>
+		{/if}
+	</div>
+
+	<div class="col-md-6 mb">
+		{if $LINK_NEWSLETTER}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_notification#}</h4>
+				<a class="btn btn-sm btn-info btn-block" href="{$LINK_NEWSLETTER}"><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;{#text_newsletter#}</a>
+			</div>
+		</div>
+		{/if}
+
+		{if $products_history}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{#title_viewed_products#}</h4>
+			</div>
+			<div class="list-group">
+			{foreach name=history_products item=prod_history_data from=$products_history}
+				<div class="list-group-item row">
+					<div class="col-xs-3 col-sm-2">
+					{if $prod_history_data.PRODUCTS_IMAGE != ''}
+						<a href="{$prod_history_data.PRODUCTS_LINK}"><img class="img-responsive" src="{$prod_history_data.PRODUCTS_IMAGE}" alt="{$prod_history_data.PRODUCTS_NAME|onlytext}" title="{$prod_history_data.PRODUCTS_NAME|onlytext}" /></a>
+					{else}
+						&nbsp;
+					{/if}
+					</div>
+					<div class="col-xs-9 col-sm-10">
+						<span><a href="{$prod_history_data.PRODUCTS_LINK}">{$prod_history_data.PRODUCTS_NAME}</a></span><br />
+						<span class="small"><strong>{#text_goto_cat#}</strong> <a href="{$prod_history_data.CAT_URL}">{$prod_history_data.CATEGORIES_NAME}</a></span><br />
+						<div class="text-right">
+						{foreach name=inner item=price_data from=$prod_history_data.PRODUCTS_PRICE_ARRAY}
+							{include file="module/includes/price_box.html"}
+						{/foreach}
+						</div>
+					</div>
+				</div>
+			{/foreach}
+			</div>
+		</div>
+		{/if}
+	</div>
+</div>

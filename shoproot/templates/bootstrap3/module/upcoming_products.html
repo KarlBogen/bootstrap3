@@ -1,0 +1,12 @@
+{config_load file="$language/lang_$language.conf" section="upcoming_products"} 
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="upcoming_products"}
+<h1 class="well well-sm">{#heading_upcoming#}</h1>
+<div class="clearfix mb">
+	<dl class="dl-horizontal upcoming_list">
+	{foreach name=aussen item=module_data from=$module_content}
+		<dt>{$module_data.PRODUCTS_DATE}:</dt>
+		<dd><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong></dd>
+	{/foreach}
+	</dl>
+</div>
