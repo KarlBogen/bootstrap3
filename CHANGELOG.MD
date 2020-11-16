@@ -2,3 +2,4 @@
 
 - Übertragung der Dateien zu Github
 - Vorbereitung für das MODUL: OIL.js Cookie Consent Management
+  dadurch wurden im Paket zwei neue Sprachdateien hinzugefügt.
