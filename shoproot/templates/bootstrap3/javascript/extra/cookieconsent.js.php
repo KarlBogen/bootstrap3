@@ -1,6 +1,6 @@
 <?php
   /* --------------------------------------------------------------
-   $Id: cookieconsent.js.php 12860 2020-08-05 10:32:40Z GTB $
+   $Id: cookieconsent.js.php 13018 2020-12-07 19:32:43Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -11,28 +11,22 @@
    --------------------------------------------------------------*/
 
 if (defined('MODULE_COOKIE_CONSENT_STATUS') && strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'true') {
-
+  $lang_links = '';
   if (!isset($lng) || (isset($lng) && !is_object($lng))) {
     require_once(DIR_WS_CLASSES . 'language.php');
     $lng = new language;
   }
 
-  if (count($lng->catalog_languages) > 1 && strpos(basename($PHP_SELF), 'checkout') === false) {
-    $lang_links = '';
-	$i = 0;
+  if (count($lng->catalog_languages) > 1) {
+    $lang_content = array();
     reset($lng->catalog_languages);
     foreach ($lng->catalog_languages as $key => $value) {
       $lng_link_url = xtc_href_link(basename($PHP_SELF), xtc_get_all_get_params(array('language', 'currency')) . 'language=' . $key, $request_type);
       if ($lng_link_url != '#') {
-        if ($value['status'] == '1') {
-			$i++;
-		}
-        $lang_links .= "<a class='pull-left rb_left' href='" . $lng_link_url . "'>" . $value['name'] . "</a>";
+        $lang_links .= "<a class='as-oil-lang' href='" . $lng_link_url . "'>" . $value['name'] . "</a>";
       }
     }
-    $lang_links = $i > 1 ? $lang_links : '';
   }
-
 ?>
 <script id="oil-configuration" type="application/configuration">
 {
