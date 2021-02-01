@@ -1,6 +1,6 @@
 UNRELEASED
 
-- jquery.cookieconsent-oil.ccs angepasst
+- jquery.cookieconsent-oil.css angepasst
 
 1.0.0 [16.11.2020]
 
