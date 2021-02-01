@@ -75,7 +75,7 @@ Ist das Modul aktualisiert worden, dann müssen auch diese Templatedateien gepr�
 
 1.	Dateien aus den Ordnern NEW_FILES und CHANGED_FILES in den Shop kopieren.
 2.	Im Adminbereich **Module -> System Module** das Modul **Cookie Consent** installieren.
-3.	Konfiguriert kann das Modul unter Menüpunkt **Konfiguration -> Cookie Consent** werden.
+3.	Konfiguriert kann das Modul unter Menüpunkt **Konfiguration -> Cookie Consent** werden.<br />
 	*Am Template müssen keine Veränderungen vorgenommen werden, alle nötigen Dateien sind im Templateordner enthalten.*
 
 P.S.:
