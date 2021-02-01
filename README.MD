@@ -63,13 +63,13 @@ Wer das neue Modul bereits nutzen will, der muss darauf achten, von hier
 immer die aktuellen Dateien zu nutzen.
 
 Ist das Modul aktualisiert worden, dann müssen auch diese Templatedateien geprüft werden
-- templates/bootstrap4/boxes/box_content.html
-- templates/bootstrap4/css/jquery.cookieconsent-oil.css
-- templates/bootstrap4/javascript/general.js.php
-- templates/bootstrap4/javascript/oil.min.js
-- templates/bootstrap4/javascript/extra/cookieconsent.js.php
-- templates/bootstrap4/index.html
-- templates/bootstrap4/offline.html
+- templates/bootstrap3/boxes/box_content.html
+- templates/bootstrap3/css/jquery.cookieconsent-oil.css
+- templates/bootstrap3/javascript/general.js.php
+- templates/bootstrap3/javascript/oil.min.js
+- templates/bootstrap3/javascript/extra/cookieconsent.js.php
+- templates/bootstrap3/index.html
+- templates/bootstrap3/offline.html
 
 #### Einbau
 
