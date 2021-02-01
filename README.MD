@@ -71,6 +71,8 @@ Ist das Modul aktualisiert worden, dann müssen auch diese Templatedateien gepr�
 - templates/bootstrap4/index.html
 - templates/bootstrap4/offline.html
 
+#### Einbau
+
 1.	Dateien aus den Ordnern NEW_FILES und CHANGED_FILES in den Shop kopieren.
 2.	Im Adminbereich **Module -> System Module** das Modul **Cookie Consent** installieren.
 3.	Konfiguriert kann das Modul unter Menüpunkt **Konfiguration -> Cookie Consent** werden.
