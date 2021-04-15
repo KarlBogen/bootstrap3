@@ -1,13 +1,13 @@
 # Bootstrap3 für Modified Shop 2.0 - freies responsive Template
 
-Das Template basiert auf dem Bootstrap-Framework 3 und wurde zuletzt angepasst und getestet mit der **Modified Shopversion 2.0.5.1**.
+Das Template basiert auf dem Bootstrap-Framework 3 und wurde zuletzt angepasst und getestet mit der **Modified Shopversion 2.0.6.0**.
 
 ![](images/screenshot_1.png)
 
 ## Eigenschaften:
 - responsive Template für PC, Tablet, Smartphone
 - unterstützt alle Neuerungen der Shopversion 2.0 (z.B. Komprimierung, Filter).
-- EU-Cookie-Hinweis - **jetzt mit Vorbereitung für das MODUL: OIL.js Cookie Consent Management (Anleitung im Anhang)**
+- EU-Cookie-Hinweis - **das System-Modul "Cookie Consent" (ab Shopversion 2.0.6.0 Standard) muss dazu im Adminbereich installiert werden**
 - Bilderslider auf der Startseite
 - Slider im Banner-Manager befüllbar
 - Cloud-Zoom-Vergrößerung in der Produktdetailansicht
@@ -55,6 +55,7 @@ Karl<br />
 ## Anhang
 
 ### Einbau - MODUL: OIL.js Cookie Consent Management
+#### (Achtung: Diese Anleitung gilt nur für ältere Shopversionen - ab Shopversion 2.0.6.0 ist dieses Modul Standard!)
 
 Wer das neue Modul bereits nutzen will, der muss darauf achten, von hier
 

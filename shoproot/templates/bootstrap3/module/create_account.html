@@ -141,7 +141,7 @@
 						{$INPUT_VVCODE|replace:'<input':'<input class="form-control input-sm"'}
 					</div>
 				{/if}
-				{if defined($smarty.const.SIGN_CONDITIONS_ON_CHECKOUT)}
+				{if "SIGN_CONDITIONS_ON_CHECKOUT"|defined}
 					<div class="checkbox clearfix mb">
 						<label for="privacy">
 							{if $PRIVACY_CHECKBOX}{$PRIVACY_CHECKBOX}{/if}

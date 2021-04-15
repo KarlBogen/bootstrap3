@@ -123,7 +123,6 @@
 						{*if isset($MANUFACTURER_IMAGE) && $MANUFACTURER_IMAGE != ''}<div class="pd_manu_image"><a class="thumbnail text-center" title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}"><img class="img-responsive" src="{$MANUFACTURER_IMAGE}" alt="{$MANUFACTURER|onlytext}" /></a></div>{/if*}
 						{if $PRODUCTS_URL != ''}<div>{$PRODUCTS_URL}</div>{/if}
 					</div>
-					{if isset($KLARNA_PPBOX)}{$KLARNA_PPBOX}{/if}
 				</div>
 			</div>
 
@@ -157,16 +156,21 @@
 						{$MODULE_product_options}
 					</div>
 				{/if}
+				{if $PAYPALPLAN}
+					<div class="well well-sm mb">
+						{$PAYPALPLAN}
+					</div>
+				{/if}
 				{if $ADD_CART_BUTTON != ''}
 				<div class="well well-sm mb">
 					<div class="row">
 						<div class="col-xs-3 mb">{$ADD_QTY|replace:'input':'input class="form-control input-sm"'}</div>
 						<div class="col-xs-9">
 							{$ADD_CART_BUTTON|button|replace:'btn ':'mb btn '}
-							{if isset($ADD_CART_BUTTON_EXPRESS)}
+							{if isset($ADD_CART_BUTTON_EXPRESS) && !$PAYPALPLAN}
 								{$ADD_CART_BUTTON_EXPRESS|button|replace:'btn ':'mb btn '}
 							{/if}
-							{if isset($ADD_CART_BUTTON_PAYPAL)}
+							{if $ADD_CART_BUTTON_PAYPAL && !$PAYPALPLAN}
 								{$ADD_CART_BUTTON_PAYPAL|button}
 							{/if}
 							{if $ADD_CART_BUTTON_WISHLIST_TEXT}
@@ -177,13 +181,13 @@
 				</div>
 				{/if}
 
-				{if $PAYPAL_INSTALLMENT}
+				{if $PAYPAL_INSTALLMENT && !$PAYPALPLAN}
 					<div class="clearfix mb">
 						{$PAYPAL_INSTALLMENT}
 					</div>
 				{/if}
 
-		        {if $EASYCREDIT}
+		        {if $EASYCREDIT && !$PAYPALPLAN}
 					<div class="clearfix mb">
 						{$EASYCREDIT}
 					</div>
@@ -215,10 +219,6 @@
 					</div>
 				</div>
 				<br class="clearfix" />
-
-				{if isset($XTB_REDIRECT_USER_TO) && $XTB_REDIRECT_USER_TO == 'product'}
-					<div class="xtb_booster_redirect_message alert alert-info"><strong>Sie haben die eBay Auktion gewonnen!</strong><br />Bitte w&auml;hlen Sie nun noch die gew&uuml;nschten Produkteigenschaften und legen Sie den Artikel danach in den Warenkorb, um mit der Zahlung fortzufahren und das Produkt versandfertig zu machen!</div>
-				{/if}
 			</div>
 			<br class="clearfix" />
 		</div>
@@ -228,7 +228,7 @@
 		<ul id="bs_tabs" class="nav nav-tabs panel-heading" role="tablist">
 			{if $PRODUCTS_DESCRIPTION != ''}<li role="presentation"><a href="#prod_desc" role="tab" data-toggle="tab">{#description#}</a></li>{/if}
 			{if isset($MODULE_product_tags) && $MODULE_product_tags != ''}<li role="presentation"><a href="#prod_tags" role="tab" data-toggle="tab">{#products_tags#}</a></li>{/if}
-			{if $more_images|@count > 0}<li><a href="#more_images" role="tab" data-toggle="tab">{#more_images#}</a></li>{/if}
+			{if isset($more_images) && count($more_images) > 0}<li><a href="#more_images" role="tab" data-toggle="tab">{#more_images#}</a></li>{/if}
 			{if isset($MODULE_products_media) && $MODULE_products_media != ''}<li role="presentation"><a href="#prod_media" role="tab" data-toggle="tab">{#products_media#}</a></li>{/if}
 			{if isset($MODULE_products_reviews) && $MODULE_products_reviews != ''}<li role="presentation"><a href="#prod_reviews" role="tab" data-toggle="tab">{#products_reviews#}</a></li>{/if}
 			{if (isset($MODULE_cross_selling) && $MODULE_cross_selling != '') || (isset($MODULE_reverse_cross_selling) && $MODULE_reverse_cross_selling != '')}<li role="presentation"><a href="#cross_sell" role="tab" data-toggle="tab">{#cross_selling#}</a></li>{/if}
@@ -238,7 +238,7 @@
 		<div class="tab-content panel-body clearfix">
 			{if $PRODUCTS_DESCRIPTION != ''}<div role="tabpanel" class="tab-pane active" id="prod_desc"><h4 class="detailbox">{#products_desc#}</h4><div itemprop="description">{$PRODUCTS_DESCRIPTION}</div></div>{/if}
 			{if isset($MODULE_product_tags) && $MODULE_product_tags != ''}<div role="tabpanel" class="tab-pane active" id="prod_tags">{$MODULE_product_tags}</div>{/if}
-			{if $more_images|@count > 0}
+			{if isset($more_images) && count($more_images) > 0}
 				<div role="tabpanel" class="tab-pane active" id="more_images">
 					<div class="row">
 						<div class="pd_more_images col-xs-12 mb eq-height">

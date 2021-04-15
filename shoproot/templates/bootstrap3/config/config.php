@@ -18,10 +18,6 @@
   // logo
   define('SHOP_LOGO', 'img/logo_head.png'); // Dieses Logo wird im Template gezeigt z.B. shoproot/templates/bootstrap3/img/logo_head.png -> 'img/logo_head.png'
 
-  // EU-Cookie
-  define('EU_COOKIE_PLACE', 'default'); // Wo EU-COOKIE anzeigen? 'default' = unten volle Breite, 'bottom-right' = klein rechts unten, 'bottom-left' = klein links unten
-  define('EU_COOKIE_CONTENT', 2); // coID des Contentmanger-Textes der beim Klick auf "Mehr Informationen" angezeigt werden soll (normalerweise "2" für "Privatshäre und Datenschutz").
-
   // Javascript im Browser deaktiviert
   define('SHOW_JS_DISABLED', true); // Hinweis anzeigen = true, ansonsten false
 

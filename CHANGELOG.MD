@@ -1,6 +1,8 @@
 UNRELEASED
 
-- jquery.cookieconsent-oil.css angepasst
+1.1.0 [15.04.2021]
+
+- Updates für Shopversion 2.0.6.0
 
 1.0.0 [16.11.2020]
 

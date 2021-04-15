@@ -28,10 +28,9 @@
 	<div class="row">
 		{if $CONTINUE_LINK}<div class="col-xs-6 col-sm-3 pull-left mb"><a href="{$CONTINUE_LINK}">{$BUTTON_CONTINUE_SHOPPING|button}</a></div>{/if}
 		{if isset($ACTIVATE_EXPRESS_LINK)}<div class="col-xs-6 col-sm-3 pull-left mb"><span class="express_info_cart"><a class="btn btn-info btn-sm btn-block" href="{$ACTIVATE_EXPRESS_LINK}">{#checkout_express_activate#}</a></span></div>{/if}
-		{if isset($BUTTON_CHECKOUT_EXPRESS)}{if $BUTTON_PAYPAL != ''}<div class="col-xs-6 col-sm-3 pull-right mb"><span class="paypal_button2 mb">{$BUTTON_PAYPAL}</span></div>{/if}{/if}
 		<div class="col-xs-6 col-sm-3 pull-right mb">{$BUTTON_CHECKOUT|button|replace:'<button ':'<button name="checkout_redirect" '}</div>
-		{if !isset($BUTTON_CHECKOUT_EXPRESS)}{if $BUTTON_PAYPAL != ''}<div class="col-xs-6 col-sm-3 pull-right mb"><span class="paypal_button mb">{$BUTTON_PAYPAL}</span></div>{/if}{/if}
-		{if isset($BUTTON_CHECKOUT_EXPRESS)}<div class="col-xs-6 col-sm-3 pull-right mb"><span class="express_button mb">{$BUTTON_CHECKOUT_EXPRESS|button}</span></div>{/if}
+		{if $BUTTON_PAYPAL != '' && !$PAYPALPLAN}<div class="col-xs-6 col-sm-3 pull-right mb"><span class="paypal_button mb">{$BUTTON_PAYPAL}</span></div>{/if}
+		{if isset($BUTTON_CHECKOUT_EXPRESS) && !$PAYPALPLAN}<div class="col-xs-6 col-sm-3 pull-right mb"><span class="express_button mb">{$BUTTON_CHECKOUT_EXPRESS|button}</span></div>{/if}
 	</div>
     {$FORM_END}
 {/if}

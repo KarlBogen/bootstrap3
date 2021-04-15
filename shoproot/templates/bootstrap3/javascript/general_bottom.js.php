@@ -29,11 +29,6 @@ $script_array = array(
 	DIR_TMPL_JS.'jquery.alertable.min.js',
 );
 
-// Cookieconsent nur wenn nicht oil.min.js
-if (!defined('MODULE_COOKIE_CONSENT_STATUS') || strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'false') {
-	$script_array[] = DIR_TMPL_JS .'jquery.cookieconsent.min.js';
-}
-
 // Cloud Zoom
 if (USE_CLOUD_ZOOM == true) {
 	$script_array[] = DIR_TMPL_JS .'cloud-zoom.1.0.3.min.js';

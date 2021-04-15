@@ -1,10 +1,10 @@
 {$MESSAGE}
 
-Sie können den Coupon bei Ihrer Bestellung einlösen. Geben Sie dafür Ihren Coupon-Code in das Feld für Gutschein-/Couponcodes ein.
+Sie kÃ¶nnen den Coupon bei Ihrer Bestellung einlÃ¶sen. Geben Sie dafÃ¼r Ihren Coupon-Code in das Feld fÃ¼r Gutschein-/Couponcodes ein.
 
 Ihr Coupon-Code lautet: {$COUPON_ID}
 
-Heben Sie Ihren Coupon-Code gut auf, nur so können Sie von diesem Angebot profitieren
-wenn Sie uns das nächste mal unter {$WEBSITE} besuchen.
+Heben Sie Ihren Coupon-Code gut auf, nur so kÃ¶nnen Sie von diesem Angebot profitieren
+wenn Sie uns das nÃ¤chste mal unter {$WEBSITE} besuchen.
 
 [SIGNATUR]

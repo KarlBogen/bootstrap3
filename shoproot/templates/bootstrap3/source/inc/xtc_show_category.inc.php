@@ -1,6 +1,6 @@
 <?php
   /* -----------------------------------------------------------------------------------------
-   $Id: xtc_show_category.inc.php 4200 2013-01-10 19:47:11Z Tomcraft1980 $
+   $Id: xtc_show_category.inc.php 12822 2020-07-09 06:24:46Z GTB $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -32,7 +32,7 @@ if ($foo[$counter]['level'] < CATEGORIESMENU_MAXLEVEL || CATEGORIESMENU_MAXLEVEL
     if ($level > $oldlevel) { //neue Unterebene
       $ul = "\n" . $tab. '<div class="panel panel-default"><ul class="list-group">'. "\n";
       $categories_string = rtrim($categories_string, "\n"); //Zeilenumbruch entfernen
-      $categories_string = substr($categories_string, 0, strlen($categories_string) -5);  //letztes  </li>  entfernen  
+      $categories_string = substr($categories_string, 0, -5);  //letztes  </li>  entfernen
     } elseif ($level < $oldlevel) { //zurück zur höheren Ebene
 	if ($oldlevel > CATEGORIESMENU_MAXLEVEL && CATEGORIESMENU_MAXLEVEL != false) {
       $ul = close_ul_tags($level,CATEGORIESMENU_MAXLEVEL);
@@ -73,7 +73,7 @@ if ($foo[$counter]['level'] < CATEGORIESMENU_MAXLEVEL || CATEGORIESMENU_MAXLEVEL
 		//	So kann man diverse Links in EINE Kategorien-Navigation setzen.
 		// -----------------------------------------------------------------------------------
 
-		if ($foo[$counter]['heading'] != '') {
+		if (isset($foo[$counter]['heading']) && $foo[$counter]['heading'] != '') {
 			$CatHeading = $foo[$counter]['heading'];
 			$newHref = initNewHref($CatHeading);
 			if (!empty($newHref)) $foo[$counter]['link'] = $newHref;

@@ -29,12 +29,7 @@
 		$css_array[] = DIR_TMPL_CSS.'bootstrap/theme.min.css';
 	}
 
-	if (defined('MODULE_COOKIE_CONSENT_STATUS') && strtolower(MODULE_COOKIE_CONSENT_STATUS) == 'true') {
-		$css_array[] = DIR_TMPL_CSS.'jquery.cookieconsent-oil.css';
-	}
-	else {
-		$css_array[] = DIR_TMPL_CSS.'jquery.cookieconsent.css';
-	}
+	$css_array[] = DIR_TMPL_CSS.'cookieconsent.css';
 
 	// Cloud Zoom
 	if (USE_CLOUD_ZOOM === true) {

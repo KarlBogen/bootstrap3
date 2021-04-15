@@ -3,6 +3,7 @@
 {config_load file="lang_`$language`.section" section="reviews"}
 <h1 class="well well-sm">{#heading_reviews#}</h1>
 {if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $success_message != ''}<div class="alert alert-success">{$success_message}</div>{/if}
 {foreach name=aussen item=module_data from=$module_content}
 {if $smarty.foreach.aussen.first}
 <div class="row clearfix mb">

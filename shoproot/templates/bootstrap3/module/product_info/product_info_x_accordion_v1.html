@@ -102,7 +102,7 @@
 						{if $PRODUCTS_MANUFACTURERS_MODEL != ''}<meta itemprop="mpn" content="{$PRODUCTS_MANUFACTURERS_MODEL}" />{/if}
 						<meta itemprop="itemCondition" content="http://schema.org/NewCondition" />
 
-						<div class="pd_price">
+						<div class="pd_price" id="p-price">
 							{if $PRODUCTS_FSK18 == 'true'}<div class="pd_fsk18"></div>{/if}
         					{foreach name=inner item=price_data from=$PRODUCTS_PRICE_ARRAY}
 								{include file="module/includes/price_info.html"}
@@ -145,12 +145,16 @@
 						{if isset($MANUFACTURER_LINK) && $MANUFACTURER_LINK != ''}<div class="small"><strong>{#manufacturer_more_of#}</strong> <a title="{$MANUFACTURER|onlytext}" href="{$MANUFACTURER_LINK}">{$MANUFACTURER}</a></div>{/if}
 						{if $PRODUCTS_URL != ''}<div class="small">{$PRODUCTS_URL}</div>{/if}
 					</div>
-					{if isset($KLARNA_PPBOX)}{$KLARNA_PPBOX}{/if}
 				</div>
 
 				{if isset($MODULE_product_options) && $MODULE_product_options != ''}
 					<div class="well well-sm mb">
 						{$MODULE_product_options}
+					</div>
+				{/if}
+				{if $PAYPALPLAN}
+					<div class="well well-sm mb">
+						{$PAYPALPLAN}
 					</div>
 				{/if}
 				{if $ADD_CART_BUTTON != ''}
@@ -159,10 +163,10 @@
 						<div class="col-xs-3 mb">{$ADD_QTY|replace:'input':'input class="form-control input-sm"'}</div>
 						<div class="col-xs-9">
 							{$ADD_CART_BUTTON|button|replace:'btn ':'mb btn '}
-							{if isset($ADD_CART_BUTTON_EXPRESS)}
+							{if isset($ADD_CART_BUTTON_EXPRESS) && !$PAYPALPLAN}
 								{$ADD_CART_BUTTON_EXPRESS|button|replace:'btn ':'mb btn '}
 							{/if}
-							{if isset($ADD_CART_BUTTON_PAYPAL)}
+							{if $ADD_CART_BUTTON_PAYPAL && !$PAYPALPLAN}
 								{$ADD_CART_BUTTON_PAYPAL|button}
 							{/if}
 							{if $ADD_CART_BUTTON_WISHLIST_TEXT}
@@ -173,13 +177,13 @@
 				</div>
 				{/if}
 
-				{if $PAYPAL_INSTALLMENT}
+				{if $PAYPAL_INSTALLMENT && !$PAYPALPLAN}
 					<div class="clearfix mb">
 						{$PAYPAL_INSTALLMENT}
 					</div>
 				{/if}
 
-		        {if $EASYCREDIT}
+		        {if $EASYCREDIT && !$PAYPALPLAN}
 					<div class="clearfix mb">
 						{$EASYCREDIT}
 					</div>
@@ -190,7 +194,7 @@
 
 				<div class="row">
 					{*if $ADD_CART_BUTTON_WISHLIST_TEXT}<div class="col-xs-6 mb">{$ADD_CART_BUTTON_WISHLIST_TEXT|replace:'><input':'><button'|replace:'wishlist_submit_link':'wishlist_submit_link btn btn-info btn-xs btn-block'|replace:'/>':'>'}<span class="glyphicon glyphicon-star"></span>&nbsp;&nbsp;{$smarty.const.IMAGE_BUTTON_TO_WISHLIST}</button></div><div class="clearfix"></div>{/if*}
-                    {*if isset($PRODUCTS_PRINT_LAYER)}<div class="col-sm-6 mb">{$PRODUCTS_PRINT_LAYER|replace:"\">":"\"><span class=\"glyphicon glyphicon-print\"></span>&nbsp;&nbsp;"|replace:'iframe':'iframe btn btn-info btn-xs btn-block'}</div><div class="clearfix"></div>{/if*}
+                    {*if isset($PRODUCTS_PRINT_LAYER)}<div class="col-xs-6 mb">{$PRODUCTS_PRINT_LAYER|replace:"\">":"\"><span class=\"glyphicon glyphicon-print\"></span>&nbsp;&nbsp;"|replace:'iframe':'iframe btn btn-info btn-xs btn-block'}</div><div class="clearfix"></div>{/if*}
 					{if $smarty.session.customers_status.customers_status_write_reviews == 1}
 						{if isset($PRODUCTS_WRITE_REVIEW)}<div class="col-xs-6 mb">{$PRODUCTS_WRITE_REVIEW|replace:'href=':'class="btn btn-info btn-xs btn-block" href='|replace:'">':'"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;'}</div><div class="clearfix"></div>{/if}
 					{/if}
@@ -251,7 +255,7 @@
 			</div>
 		</div>
 		{/if}
-		{if $more_images|@count > 0}
+		{if isset($more_images) && count($more_images) > 0}
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="acc3" style="padding:0;">
 				<h4 class="panel-title">

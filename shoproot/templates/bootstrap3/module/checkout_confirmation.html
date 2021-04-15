@@ -64,7 +64,7 @@
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-    				<h4>{if isset($SHIPPING_CLASS) && strstr($SHIPPING_CLASS, 'selfpickup')}{#text_pickup_address#}{else}{#text_shipping_address#}{/if}&nbsp;<a class="mini" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a></h4>
+    				<h4>{if isset($SHIPPING_CLASS) && strpos($SHIPPING_CLASS, 'selfpickup')}{#text_pickup_address#}{else}{#text_shipping_address#}{/if}&nbsp;<a class="mini" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a></h4>
     				{$DELIVERY_LABEL}
 				</div>
 			</div>
@@ -103,6 +103,7 @@
 		</div>
 	{/if}
 </div>
+{if $ORDER_COMMENTS != '' || $PAYMENT_INFORMATION != ''}
 <div class="row clearfix">
 	{if $ORDER_COMMENTS != ''}
 		<div class="col-md-6">
@@ -128,6 +129,18 @@
 		</div>
 	{/if}
 </div>
+{/if}
+{if $MODULE_gift_cart}
+<div class="row clearfix">
+	<div class="col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{$MODULE_gift_cart}
+			</div>
+		</div>
+	</div>
+</div>
+{/if}
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h4>{#text_products#}&nbsp;<a class="mini" href="{$PRODUCTS_EDIT}">{#text_edit#}</a></h4>
@@ -164,7 +177,7 @@
 										</div>
 									{/foreach}
 								{/if}
-								{if $data.attributes != ''}
+								{if is_array($data.attributes) && count($data.attributes) > 0}
 									<ul class="attributes_list">
 									{foreach key=a_data item=attrib_data from=$data.attributes}
 										<li><strong>{$attrib_data.option}:</strong> {$attrib_data.value}</li>

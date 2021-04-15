@@ -25,7 +25,7 @@ $state_pages = array(
 
 if (ACCOUNT_STATE == 'true' && in_array(basename($PHP_SELF), $state_pages)) {
   
-  //Länder mit required_zones = 1 -> Dropdown anzeigen
+  //LÃ¤nder mit required_zones = 1 -> Dropdown anzeigen
   $query = xtc_db_query(
     "SELECT GROUP_CONCAT(countries_id) AS ids
         FROM ".TABLE_COUNTRIES."
@@ -33,7 +33,7 @@ if (ACCOUNT_STATE == 'true' && in_array(basename($PHP_SELF), $state_pages)) {
     ");
   $countries = xtc_db_fetch_array($query);
   
-  //Länder ohne Zonen -> Inputfeld anzeigen
+  //LÃ¤nder ohne Zonen -> Inputfeld anzeigen
   $query = xtc_db_query(
       "SELECT GROUP_CONCAT(c.countries_id) AS ids
          FROM countries c 
@@ -96,7 +96,11 @@ function load_state() {
           "text"    : arr.name
         }).appendTo(stateSelect);
       });
-      $("[name='state']").val(state);
+      if (state != 0) {
+        $("[name='state']").val(state);
+      } else {
+        $("[name='state']").prop('selectedIndex',0);
+      }
       stateSelect.closest("div.form-group").show();
     } else {
       $("[name='state']").replaceWith('<input type="text" name="state"></input>');

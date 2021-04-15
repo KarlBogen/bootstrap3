@@ -17,7 +17,7 @@
 					</div>
 					<div class="col-xs-10">
 						<a class="ord_prdoducts_name" href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
-						{if $module_data.ATTRIBUTES != ''}
+						{if is_array($module_data.ATTRIBUTES) && count($module_data.ATTRIBUTES) > 0}
 							<ul class="attributes_list">
 							{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES}
 								<li><strong>{$item_data.NAME}:</strong> {$item_data.VALUE_NAME}</li>
@@ -47,7 +47,7 @@
 	{/foreach}
 </div>
 
-{if sizeof($TOTAL_BLOCK_ARRAY) > 0}
+{if isset($TOTAL_BLOCK_ARRAY) && count($TOTAL_BLOCK_ARRAY) > 0}
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-4">
 		<div class="panel panel-default">
@@ -59,7 +59,7 @@
 				</div>
 				{/foreach}
 			</div>
-			{if sizeof($shipping_content) > 0}
+			{if isset($shipping_content) && count($shipping_content) > 0}
 				{if $SELECT_COUNTRY}
 					<div class="panel-body bs form-inline text-right">
 						{$SELECT_COUNTRY|replace:'<select':'<select class="form-control input-sm"'}
@@ -98,7 +98,7 @@
 					{/if}
 					<strong>{$TOTAL_CONTENT}</strong>
 				</div>
-	{if sizeof($shipping_content) > 0}
+	{if isset($shipping_content) && count($shipping_content) > 0}
 		{if $SELECT_COUNTRY}
 			<div class="panel-body bs form-inline text-right">
 				{$SELECT_COUNTRY|replace:'<select':'<select class="form-control input-sm"'}
@@ -131,5 +131,4 @@
   {if isset($FREE_SHIPPING_INFO)}<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{$FREE_SHIPPING_INFO}</div>{/if}
   
   {*if $TOTAL_WEIGHT}<div class="well well-sm mb">{#text_total_weight#} {$TOTAL_WEIGHT|number_format:2:",":"."} kg</div>{/if*}
-  {if $KLARNA_PPBOX}<div class="karna_container well well-sm mb clearfix">{$KLARNA_PPBOX}</div>{/if}
   {if $PAYPAL_INSTALLMENT}<div class="mb clearfix">{$PAYPAL_INSTALLMENT}</div>{/if}
