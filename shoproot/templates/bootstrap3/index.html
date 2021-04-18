@@ -12,16 +12,16 @@
 			{if isset($box_LANGUAGES) && trim($box_LANGUAGES) != ''}{$box_LANGUAGES}{/if}
 			<ul class="nav nav-pills pull-right">
 				<li class="{if isset($home) && $home == true}active{/if}"><a href="{$index}"><span class="glyphicon glyphicon-home"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_index#}</span></a></li>
-				{if isset($account)}<li{if strstr($smarty.server.PHP_SELF, 'account') && !strstr ($smarty.server.PHP_SELF, 'create_account')} class="active"{/if}><a href="{$account}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_account#}</span></a></li>{/if}
+				{if isset($account)}<li{if strpos($smarty.server.PHP_SELF, 'account') !== false && strpos($smarty.server.PHP_SELF, 'create_account') === false} class="active"{/if}><a href="{$account}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_account#}</span></a></li>{/if}
 				{if isset($smarty.session.customer_id)}
-					<li{if strstr ($smarty.server.PHP_SELF, 'logoff')} class="active"{/if}><a href="{$logoff}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_logoff#}</span></a></li>
+					<li{if strpos($smarty.server.PHP_SELF, 'logoff') !== false} class="active"{/if}><a href="{$logoff}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_logoff#}</span></a></li>
 				{else}
-					<li{if strstr($smarty.server.PHP_SELF, 'create_account')} class="active"{/if}><a href="{$create_account}"><span class="glyphicon icon-user-plus" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#new_customer#}</span></a></li>
-					<li{if strstr($smarty.server.PHP_SELF, 'login')} class="active"{/if}><a href="{$login}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_login#}</span></a></li>
+					<li{if strpos($smarty.server.PHP_SELF, 'create_account') !== false} class="active"{/if}><a href="{$create_account}"><span class="glyphicon icon-user-plus" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#new_customer#}</span></a></li>
+					<li{if strpos($smarty.server.PHP_SELF, 'login') !== false} class="active"{/if}><a href="{$login}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_login#}</span></a></li>
 				{/if}
 			</ul>
 			<ul class="nav nav-pills pull-right" style="clear:right;">
-				<li{if strstr ($smarty.server.PHP_SELF, 'checkout')} class="active"{/if}><a href="{$checkout}"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;<strong>{#link_checkout#}</strong></span></a></li>
+				<li{if strpos($smarty.server.PHP_SELF, 'checkout') !== false} class="active"{/if}><a href="{$checkout}"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;<strong>{#link_checkout#}</strong></span></a></li>
 				{if isset($box_WISHLIST)}<li class="wishlist">{$box_WISHLIST}</li>{/if}
 				{if isset($box_CART)}<li class="cart">{$box_CART}</li>{/if}
 				</ul>

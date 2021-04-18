@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------------
 	GUNNART "SHOW_CATEGORY ADVANCED"
 	
-	erweiterte Kategorien-Navigation für xt:Commerce 3.04 SP1 / SP2.1
+	erweiterte Kategorien-Navigation f?r xt:Commerce 3.04 SP1 / SP2.1
 	
 	Proudly togetherfummeled by Gunnar Tillmann
 	http://www.gunnart.de
@@ -19,7 +19,7 @@
 // -----------------------------------------------------------------------------------
 	$CatConfig = array(
 		
-		// Bis zu welcher Ebene soll der Kategorien-Baum standardmäßig 
+		// Bis zu welcher Ebene soll der Kategorien-Baum standardmäŸ©g 
 		// aufgeklappt sein? 
 		// false, wenn er komplett ausgeklappt sein soll.
 		'MaxLevel' 			=> 	MMENU_MAXLEVEL,
@@ -27,7 +27,7 @@
 		// Leere Kategorien verstecken? true: ja, false: nein
 		'HideEmpty' 		=> 	true,
 		
-		// Dürfen aktive Kategorien weitere Unterkategorien aufklappen lassen?
+		// D?rfen aktive Kategorien weitere Unterkategorien aufklappen lassen?
 		'ShowAktSub' 		=> 	false,
 		
 		// Kategorien-Tiefe: Wie soll die CSS-Klasse benannt werden?
@@ -47,19 +47,19 @@
 		'MarkSubMenue'		=> 	false,
 		'SubMenueCss'		=> 	'haschild',
 
-		// Automatische Zuteilung einer CSS-ID (für den Listenpunkt)
+		// Automatische Zuteilung einer CSS-ID (f?r den Listenpunkt)
 		'ShowCssIdList'		=> 	false,
 		'CssPrefixList'		=> 	'MyCat',
 		
-		// Automatische Zuteilung einer CSS-ID (für den Link)
+		// Automatische Zuteilung einer CSS-ID (f?r den Link)
 		'ShowCssIdLink'		=> 	false,
 		'CssPrefixLink'		=> 	'MyCatLink',
 		
-		// Darstellung Produktzählung, falls eingeschaltet
+		// Darstellung Produktzä¨¬ung, falls eingeschaltet
 		'CountPre'			=> 	'&nbsp;<span class="badge">',
 		'CountAfter'		=>	'</span>',
 		
-		// Tags außerhalb des Links?
+		// Tags auß¥rhalb des Links?
 		'LinkPre'			=>	false,		// z.B. '<div>',
 		'LinkAfter'			=>	false,		// z.B. '</div>',
 
@@ -67,7 +67,7 @@
 		'NamePre'			=>	false,		// z.B. '<span>',
 		'NameAfter'			=>	false,		// z.B. '</span>',
 		
-		// Soll die Überschrift nach Css-Markern à la {#class:EinName#} 
+		// Soll die Ü¢erschrift nach Css-Markern à ¬a {#class:EinName#} 
 		// durchsucht werden? So kann man z.B. einzelne 
 		// Links speziell gestalten.
 		'CssMarkersToList'	=>	false, 		// Gefundene Marker zur Liste?
@@ -80,11 +80,11 @@
 
 
 // -----------------------------------------------------------------------------------
-//	Findet heraus, ob Kategorie $category_id aktive (und für die Kundengruppe 
-//	zugelassene) Artikel enthält. 
+//	Findet heraus, ob Kategorie $category_id aktive (und f?r die Kundengruppe 
+//	zugelassene) Artikel enthä¬´. 
 // -----------------------------------------------------------------------------------
 //	Im Gegensatz zu xtc_count_products_in_category()
-// 	werden hierbei die Berechtigungen und der FSK-Status geprüft.
+// 	werden hierbei die Berechtigungen und der FSK-Status gepr?ft.
 // -----------------------------------------------------------------------------------
 	function countProductsInCatMmenu($category_id) {
 	
@@ -172,11 +172,11 @@
 
 		$CatConfig['MaxLevel'] = intval($CatConfig['MaxLevel']);
 		
-		// 1) Zählen ist nicht immer nötig
+		// 1) Zä¨¬en ist nicht immer n?
 		if($CatConfig['HideEmpty'] || SHOW_COUNTS == 'true')
 			$pInCat = countProductsInCatMmenu($cid);
 	
-		// 2) Überprüfen, ob Kategorie Produkte enthält
+		// 2) Ü¢erpr?fen, ob Kategorie Produkte enthä¬´
 		if($CatConfig['HideEmpty']) {
 			$Empty = true;
 			if ($pInCat > 0)
@@ -185,7 +185,7 @@
 			$Empty = false;
 		}	
 		
-		// 3) Überprüfen, ob Kategorie gezeigt werden soll
+		// 3) Ü¢erpr?fen, ob Kategorie gezeigt werden soll
 		$Show = false;
 		if($CatConfig['HideEmpty']) {
 			if(!$Empty)
@@ -194,7 +194,7 @@
 			$Show = true;
 		}
 	
-		// 3) Überprüfen, ob Unterkategorien gezeigt werden sollen
+		// 3) Ü¢erpr?fen, ob Unterkategorien gezeigt werden sollen
 		$ShowSub = false;
 		if($CatConfig['MaxLevel']) {
 			if ($level < $CatConfig['MaxLevel'])
@@ -232,9 +232,9 @@
 				= false;
 				
 				// Nach Collapse- bzw. Expand-Markern suchen
-				if(strstr(strtolower($foo[$cid]['heading']),'{#collapse#}')) 
+				if(strpos(strtolower($foo[$cid]['heading']),'{#collapse#}') !== false)
 					$Collapse = true;
-				if(strstr(strtolower($foo[$cid]['heading']),'{#expand#}')) 
+				if(strpos(strtolower($foo[$cid]['heading']),'{#expand#}') !== false)
 					$Expand = true;
 					
 				$ListClass[] = $CatConfig['ListPrefix'];
@@ -276,7 +276,7 @@
 					$ListClass[] = $CatConfig['SubMenueCss'];
 				}
 				
-				// Quelltext einrücken
+				// Quelltext einr?cken
 				$Tabulator = str_repeat("\t",$level+1);
 
 				if($CatConfig['ShowCssIdList']) {
@@ -298,8 +298,8 @@
 					} else {
 						$Pre = "</li>\n";
 						if ($old_level > $level) {
-							// Listenpunkte schließen
-							// Quelltext einrücken
+							// Listenpunkte schließ¥n
+							// Quelltext einr?cken
 							for ($counter = 0; $counter < $old_level - $level; $counter++) {
 								$Pre .= str_repeat("\t", $old_level - $counter+1 )."</ul>\n".str_repeat("\t", $old_level - $counter)."</li>\n";
 							}
@@ -333,7 +333,7 @@
 										$CatConfig['LinkAfter'];
 			}
 			
-			// für den nächsten Durchgang ...
+			// f?r den nä£¨sten Durchgang ...
 			$old_level = $level;
 		
 			// Unterkategorien durchsteppen

@@ -1,1 +1,1 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}<li class="hidden-xs{if strstr($smarty.server.PHP_SELF, 'products_new')} active{/if}"><a href="{php}echo xtc_href_link(FILENAME_PRODUCTS_NEW, '', 'NONSSL');{/php}">{#heading_whatsnew#}</a></li>
+{config_load file="$language/lang_$language.conf" section="boxes"}<li class="hidden-xs{if strpos($smarty.server.PHP_SELF, 'products_new') !== false} active{/if}"><a href="{php}echo xtc_href_link(FILENAME_PRODUCTS_NEW, '', 'NONSSL');{/php}">{#heading_whatsnew#}</a></li>

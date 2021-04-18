@@ -64,7 +64,7 @@
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-    				<h4>{if isset($SHIPPING_CLASS) && strpos($SHIPPING_CLASS, 'selfpickup')}{#text_pickup_address#}{else}{#text_shipping_address#}{/if}&nbsp;<a class="mini" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a></h4>
+    				<h4>{if isset($SHIPPING_CLASS) && strpos($SHIPPING_CLASS, 'selfpickup') !== false}{#text_pickup_address#}{else}{#text_shipping_address#}{/if}&nbsp;<a class="mini" href="{$SHIPPING_ADDRESS_EDIT}">{#text_edit#}</a></h4>
     				{$DELIVERY_LABEL}
 				</div>
 			</div>

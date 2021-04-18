@@ -1,1 +1,1 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}<li class="hidden-phone{if strstr($smarty.server.PHP_SELF, 'specials')} active{/if}"><a href="{php}echo xtc_href_link(FILENAME_SPECIALS, '', 'NONSSL');{/php}">{#heading_specials#}</a></li>
+{config_load file="$language/lang_$language.conf" section="boxes"}<li class="hidden-phone{if strpos($smarty.server.PHP_SELF, 'specials') !== false} active{/if}"><a href="{php}echo xtc_href_link(FILENAME_SPECIALS, '', 'NONSSL');{/php}">{#heading_specials#}</a></li>
