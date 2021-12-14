@@ -1,5 +1,7 @@
 UNRELEASED
 
+- Smartyanweisung {debug} in banners.html entfernt
+
 1.1.2 [07.10.2021]
 
 - Meldung von Google Search Console 'Ungültiger Objekttyp für Feld "brand"' behoben, siehe https://www.modified-shop.org/forum/index.php?topic=42066.msg385485#msg385485
