@@ -1,5 +1,6 @@
 UNRELEASED
 
+- Update oil.min.js - zusätzlicher Button "NUR NOTWENDIGE"
 - Smartyanweisung {debug} in banners.html entfernt
 
 1.1.2 [07.10.2021]
