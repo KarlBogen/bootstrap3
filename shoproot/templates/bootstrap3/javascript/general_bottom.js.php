@@ -1,6 +1,6 @@
 <?php
 /*-----------------------------------------------------------
-   $Id: general_bottom.js.php 12789 2020-06-24 09:34:26Z GTB $
+   $Id: general_bottom.js.php 13881 2021-12-14 07:46:15Z Markus $
 
    modified eCommerce Shopsoftware
    http://www.modified-shop.org
@@ -10,10 +10,11 @@
    based on: (c) 2003 - 2006 XT-Commerce (general.js.php)
   -----------------------------------------------------------
    Released under the GNU General Public License
-   -----------------------------------------------------------
-*/
-// this javascriptfile get includes at the BOTTOM of every template page in shop
-// you can add your template specific js scripts here
+  -----------------------------------------------------------*/
+
+  // this javascriptfile get includes at the BOTTOM of every template page in shop
+  // you can add your template specific js scripts here
+  defined('DIR_TMPL_JS') OR define('DIR_TMPL_JS', DIR_TMPL.'javascript/');
 
 // Template Sprachdatei laden
 $smarty->config_load('lang_'.$_SESSION['language'].'.custom');
@@ -25,7 +26,7 @@ $script_array = array(
 	DIR_TMPL_JS.'bootstrap.min.js',
 	DIR_TMPL_JS.'pushy.min.js',
 	DIR_TMPL_JS.'bscarousel.min.js',
-	DIR_TMPL_JS.'jquery.unveil.min.js',
+	DIR_TMPL_JS.'jquery.lazysizes.min.js',
 	DIR_TMPL_JS.'jquery.alertable.min.js',
 );
 

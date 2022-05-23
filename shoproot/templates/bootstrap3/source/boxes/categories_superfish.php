@@ -49,7 +49,7 @@ Gibt es einen 3. Level m?ssen alle Unterkategorien Level 2 ?ber Unterkategorien 
 // -----------------------------------------------------------------------------------
 // 	Smarty starten
 // -----------------------------------------------------------------------------------
-	$box_smarty 	= 	new smarty;
+	$box_smarty 	= 	new Smarty;
 	$box_content	=	'';
 	$box_smarty->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 	$box_smarty->assign('language', $_SESSION['language']);
@@ -73,14 +73,16 @@ Gibt es einen 3. Level m?ssen alle Unterkategorien Level 2 ?ber Unterkategorien 
 		$box_smarty->cache_lifetime=CACHE_LIFETIME;
 		$box_smarty->cache_modified_check=CACHE_CHECK;
 		
-		$cache_id = $_SESSION['language'].'_StatID-'.$_SESSION['customers_status']['customers_status_id'];
+		$cache_id = 'lID:'.$_SESSION['language'].'|csID:'.$_SESSION['customers_status']['customers_status_id'];
 		if(!empty($GLOBALS['cPath'])) 
-			$cache_id .= '_cPath-'.$GLOBALS['cPath'];
+			$cache_id .= '|cP:'.$GLOBALS['cPath'];
 		elseif(!empty($_GET['coID']))
-			$cache_id .= '_coID-'.$_GET['coID'];
+			$cache_id .= '|coID:'.$_GET['coID'];
 		else
 			$cache_id .= '_Script-'.basename($_SERVER['SCRIPT_NAME']);
-	
+
+			$cache_id = md5($cache_id);
+
 	}
 // -----------------------------------------------------------------------------------
 
@@ -140,6 +142,7 @@ Gibt es einen 3. Level m?ssen alle Unterkategorien Level 2 ?ber Unterkategorien 
 				$Keys = array_keys($Cats);
 				foreach($Keys as $Key) {
 					if($Cats[$Key]['parent']!=0) {
+						if ($Key) $Cats[$Cats[$Key]['parent']]['subcats'] = array();
 						$Cats[$Cats[$Key]['parent']]['subcats'][]=$Key;
 					}
 				}

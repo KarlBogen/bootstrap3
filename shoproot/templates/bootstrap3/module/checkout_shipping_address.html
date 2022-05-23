@@ -10,39 +10,45 @@
 </div>
 
 <h1 class="well well-sm">{#heading_address#}</h1>
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
-{$FORM_ACTION}
-<div class="row clearfix">
-<div class="col-md-6 mb">
-  <div class="panel panel-default">
-	<div class="panel-heading">
-    	<h4 class="panel-title">{#text_current_address_short#}</h4>
-	</div>
-	<div class="panel-body">
-		<p>{$ADDRESS_LABEL}</p>
-	</div>
-	{if $BLOCK_ADDRESS}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
+
+{if !isset($NEW_ADDRESS)}
+	<div class="panel panel-default mb">
 		<div class="panel-heading">
 			<h4 class="panel-title">{#title_old_addresses#}</h4>
+			<div>{#text_old_addresses#}</div>
 		</div>
-		<div class="panel-body">
-			<p>{#text_old_addresses#}</p>
-			{$BLOCK_ADDRESS|replace:'<ol':'<ul'|replace:'</ol':'</ul'|replace:'<li>':'<li><div class="radio">'|replace:'</li>':'</div></li>'}
-		</div>
-	{/if}
 	</div>
-</div>
+	<div class="row clearfix">
+		{foreach item=module_data from=$BLOCK_ADDRESS_ARRAY}
+		<div class="col-md-6 mb">
+			<div class="panel panel-{if $module_data.SELECTED == 1}primary{else}default{/if}">
+				<div class="panel-body">
+					{$module_data.FORM_ACTION}
+					<strong>{$module_data.FIRSTNAME} {$module_data.LASTNAME}, {$module_data.CITY}</strong>
+					<div class="address">{$module_data.ADDRESS_LABEL|replace:"<br />":", "}</div>
+					<div class="address_actions mt">
+						{if isset($module_data.BUTTON_EDIT)}<span>{$module_data.BUTTON_EDIT|button}</span>{/if}{if isset($module_data.BUTTON_CONTINUE)}<span>&nbsp;&nbsp;{$module_data.BUTTON_CONTINUE|button}</span>{/if}
+					</div>
+					{$module_data.FORM_END}
+				</div>
+			</div>
+		</div>
+		{/foreach}
+	</div>
+	<div class="clearfix mb">
+		<div class="pull-left">{$BUTTON_BACK|button}</div>
+		<div class="pull-right">{$BUTTON_NEW|button}</div>
+	</div>
+{else}
+	{$FORM_ACTION}
+		{if $MODULE_new_address}
+			{$MODULE_new_address}
+		{/if}
 
-<div class="col-md-6 mb">
-	{if $MODULE_new_address}
-		{$MODULE_new_address}
-	{/if}
-</div>
-
-</div>
-
-<div class="clearfix mb">
-	<div class="pull-left">{$BUTTON_BACK|button}</div>
-	<div class="pull-right">{$BUTTON_CONTINUE|button}</div>
-</div>
-{$FORM_END}
+		<div class="clearfix mb">
+			<div class="pull-left">{$BUTTON_BACK|button}</div>
+			<div class="pull-right">{$BUTTON_CONTINUE|button}</div>
+		</div>
+	{$FORM_END}
+{/if}

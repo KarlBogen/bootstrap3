@@ -14,6 +14,9 @@
     <div class="panel-footer text-center">
 		<div class="box_text small mb">{$REVIEWS|onlytext}</div>
     	<div class="box_reviews_image">{$REVIEWS_IMAGE}</div>
+		{if isset($REVIEWS_NOTE)}
+			<div class="box_reviews_note small mt">{$REVIEWS_NOTE}</div>
+		{/if}
 	</div>
 	{else}
 		<p class="onlytop"><a href="{$PRODUCTS_LINK}">{$REVIEWS_WRITE_REVIEW}</a></p>

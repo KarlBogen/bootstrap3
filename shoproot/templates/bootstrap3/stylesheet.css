@@ -147,6 +147,11 @@
   background-color:#F2DEDE ;
   margin-bottom:10px;
 }
+.errormessage a {
+  color:#A94442;
+  font-weight:700;
+  text-decoration:underline;
+}
 .errormessage.shopsystem {
   margin-top:38px;
   margin-bottom:-32px;
@@ -531,9 +536,17 @@ margin-top: 20px;
 	padding:5px;
 	overflow: hidden;
 }
-/* Unveil-Thumbnails bei deaktiviertem Javascript ausblenden */
-.thumbnail img.unveil, img.unveil {
-	display:none;
+/* lazyload */
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+.lazyloaded {
+  opacity: 1;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 /* AGB-Fenster im Checkout */
 div.agbframe {

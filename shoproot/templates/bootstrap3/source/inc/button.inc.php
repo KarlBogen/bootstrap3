@@ -11,13 +11,13 @@ function get_bootstrap_button($image, $alt = '', $parameters = '', $submit = fal
     $title          = xtc_parse_input_field_data($alt, array('"' => '&quot;'));
     $leer			= '';
     
-    // Erklärung: es wird geprüft, welches Buttonbild von Modified aufgerufen wird. Dementsprechend werden neue Attribute zugewiesen.
+    // Erklä²µng: es wird gepr?ft, welches Buttonbild von Modified aufgerufen wird. Dementsprechend werden neue Attribute zugewiesen.
     // z.B. dem Buttonbild 'button_buy_now.gif' wird zugewiesen:
     //      'Image' => '' (kein Bild - vergleiche cart_del.gif, dort wird das Bild cart_del.gif zugewiesen, damit bleibt der Button ein Bildbutton).
     //      'Text' => IMAGE_BUTTON_IN_CART (der Text der auf dem neuen Button angezeigt wird, in der Regel der Text der Modifiedvariablen '$alt', in unserem Beispiel der Text der in der Languagedatei 'IMAGE_BUTTON_IN_CART' zugewiesen wurde).
     //      'icon' => 'icon-shopping-cart' (das Icon das im Button angezeigt wird - in der Bootstrapdokumentation unter 'Icons by Glyphicons' kann man diese aussuchen).
     //      'iconposition' => 'iconleft' (die Position des Icons im Button - 'iconleft' = links vom Text, 'iconright' = rechts vom Text).
-    //      'Class' => '' (hier kann dem Button noch eine zusätzliche CSS-Klasse zugewiesen werden).
+    //      'Class' => '' (hier kann dem Button noch eine zusä´ºliche CSS-Klasse zugewiesen werden).
     /* Buttons array */
     $buttons = array(
     // PayPal
@@ -61,6 +61,7 @@ function get_bootstrap_button($image, $alt = '', $parameters = '', $submit = fal
     'small_express.gif'             => array('Image' => '',                       'Text' => '',                           	'glyphicon' => 'icon-opencart',            	'glyphiconposition' => 'left',		'Class' => 'btn btn-express btn-default btn-sm btn-primary'),
     'small_cart.gif'                => array('Image' => '',                       'Text' => '',                           	'glyphicon' => 'glyphicon-shopping-cart',   'glyphiconposition' => 'left',		'Class' => 'btn btn-incart btn-default btn-sm'),
     'small_delete.gif'              => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-remove',          'glyphiconposition' => 'right',		'Class' => 'btn btn-danger btn-sm'),
+    'small_continue.gif'            => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-ok-sign',         'glyphiconposition' => 'right',		'Class' => 'btn btn-success btn-sm'),
     'small_view.gif'                => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-eye-open',        'glyphiconposition' => 'right',		'Class' => 'btn btn-default btn-sm'),
     'cart_del.gif'                  => array('Image' => '',                       'Text' => '',                             'glyphicon' => 'glyphicon-trash',      		'glyphiconposition' => 'left',		'Class' => ''),
     'wishlist_del.gif'              => array('Image' => '',                       'Text' => '',                             'glyphicon' => 'glyphicon-trash',      		'glyphiconposition' => 'left',		'Class' => 'btn btn-danger btn-sm'),

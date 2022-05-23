@@ -6,7 +6,7 @@
 {else}
   <h3 class="well well-sm">{$CATEGORIES_NAME}</h3>
 {/if}
-
+{if $error_message}<div class="errormessage">{$error_message}</div>{/if}
 {if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')
      || isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != ''}
 <div class="cat_description clearfix">
@@ -15,24 +15,6 @@
 </div>
 {/if}
 
-{if $module_content != '' && $TR_COLS > 0}
-<h4 class="well well-sm">{#heading_more_categories#}</h4>
-<div class="subcats row">
-  {foreach name=aussen item=module_data from=$module_content key=spalten}
-  <div class="col-xs-6 col-sm-3 text-center mb">
-    <a class="img-thumbnail" href="{$module_data.CATEGORIES_LINK}">
-      {if $module_data.CATEGORIES_IMAGE}<img class="img-responsive mb" src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME|onlytext}" />{/if}
-      <span class="subcat_title">{$module_data.CATEGORIES_NAME}</span>
-    </a>
-	{* <p class="subcat_desc small">{$module_data.CATEGORIES_DESCRIPTION|onlytext|truncate:55:"...":true}</p> *}
-  </div>
-{if $smarty.foreach.aussen.iteration is div by 4}
-<div class="clearfix visible-sm-block visible-md-block visible-lg-block"></div>
-{/if}
-{if $smarty.foreach.aussen.iteration is div by 2}
-<div class="clearfix visible-xs-block"></div>
-{/if}
-  {/foreach}
-</div>
-{/if}
+{if isset($CATEGORIES_LISTING)}{$CATEGORIES_LISTING}{/if}
+
 {if isset($MODULE_new_products)}{$MODULE_new_products}{/if}

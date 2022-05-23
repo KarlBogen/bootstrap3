@@ -70,6 +70,7 @@
 				{if isset($box_MANUFACTURERS)}{$box_MANUFACTURERS}{/if}
 				{if isset($box_MANUFACTURERS_INFO)}{$box_MANUFACTURERS_INFO}{/if}
 				{if isset($box_CURRENCIES)}{$box_CURRENCIES}{/if}
+				{if isset($box_SHIPPING_COUNTRY)}{$box_SHIPPING_COUNTRY}{/if}
 				{if isset($box_HISTORY)}{$box_HISTORY}{/if}
 				{if isset($box_TRUSTEDSHOPS)}{$box_TRUSTEDSHOPS}{/if}
 			</div>
@@ -80,7 +81,9 @@
 				{if isset($SLIDER)}
 				<div id="myCarousel" class="carousel slide">
 					<ol class="carousel-indicators">
-						{foreach name=aussen item=slider from=$SLIDER}<li data-target="#myCarousel" data-slide-to="{$smarty.foreach.aussen.iteration - 1}"{if $smarty.foreach.aussen.first} class="active"{/if}></li>{/foreach}
+						{foreach name=aussen item=slider from=$SLIDER}
+							<li data-target="#myCarousel" data-slide-to="{$smarty.foreach.aussen.iteration - 1}"{if $smarty.foreach.aussen.first} class="active"{/if}></li>
+						{/foreach}
 					</ol>
 					<div class="carousel-inner" role="listbox">
 						{foreach name=aussen item=slider from=$SLIDER}
@@ -119,6 +122,7 @@
 				{if isset($box_REVIEWS)}{$box_REVIEWS}{/if}
 				{if isset($box_MANUFACTURERS)}{$box_MANUFACTURERS}{/if}
 				{if isset($box_MANUFACTURERS_INFO)}{$box_MANUFACTURERS_INFO}{/if}
+				{if isset($box_SHIPPING_COUNTRY)}{$box_SHIPPING_COUNTRY}{/if}
 				{if isset($box_CURRENCIES)}{$box_CURRENCIES}{/if}
 				{if isset($box_HISTORY)}{$box_HISTORY}{/if}
 				{if isset($box_TRUSTEDSHOPS)}{$box_TRUSTEDSHOPS}{/if}

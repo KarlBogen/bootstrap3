@@ -3,14 +3,14 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="address_book_process"}
 {config_load file="lang_`$language`.section" section="checkout_new_address"}
-  <div class="panel panel-default">
+<div class="panel panel-default">
 	<div class="panel-heading">
-    	<h4 class="panel-title">{#title_new_address#} <span class="small">({#text_must#})</span></h4>
+		<h4 class="panel-title">{if isset($smarty.get.action) && $smarty.get.action == 'edit'}{#title_edit_address#}{else}{#title_new_address#}{/if} <span class="pflicht small">({#text_must#})</span></h4>
 	</div>
 	<div class="panel-body">
-		<p>{#text_new_address#}</p>
-	</div>
-	<div class="panel-body">
+		{if !isset($smarty.get.action) || $smarty.get.action == 'new'}
+			<div class="mb">{#text_new_address#}</div>
+		{/if}
 		<div class="form-horizontal">
       		{if $gender == '1'}
 			<div class="form-group">
@@ -81,16 +81,19 @@
 				</div>
 			</div>
 			{/if}
-		</div>
-	</div>
-    {if $new == '1'}
-	<div class="panel-footer">
-			<div class="checkbox">
-				<label>
-					{$CHECKBOX_PRIMARY}
-					{#text_standard#}
-				</label>
+		    {if $new == '1'}
+			<div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+					<div class="checkbox">
+						<label>
+							{$CHECKBOX_PRIMARY}
+							{#text_standard#}
+						</label>
+					</div>
+				</div>
 			</div>
+		    {/if}
+		</div>
+	{if isset($PARAMS)}{$PARAMS}{/if}
 	</div>
-    {/if}
 </div>

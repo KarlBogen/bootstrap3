@@ -9,8 +9,8 @@
 <h1 class="well well-sm">{#title#}</h1>
 {/if}
 
-{if $coupon_message != ''}<div class="alert alert-warning">{$coupon_message}</div>{/if}
-{if $success_message != ''}<div class="alert alert-info">{$success_message}</div>{/if}
+{if $coupon_message}<div class="alert alert-danger">{$coupon_message}</div>{/if}
+{if $success_message}<div class="alert alert-info">{$success_message}</div>{/if}
 {if $D_FLAG != 'checkout'}
 <div class="panel panel-default">
 	<div class="panel-body">

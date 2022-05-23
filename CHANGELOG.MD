@@ -1,5 +1,10 @@
 UNRELEASED
 
+
+
+1.1.3 [23.05.2022]
+
+- Update zu Shopversion 2.0.7.0
 - Update oil.min.js - zusätzlicher Button "NUR NOTWENDIGE"
 - Smartyanweisung {debug} in banners.html entfernt
 

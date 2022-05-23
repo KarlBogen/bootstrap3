@@ -3,7 +3,7 @@
 {config_load file="lang_`$language`.section" section="advanced_search"}
 <h1 class="well well-sm">{#heading_search#}</h1>
 {$FORM_ACTION}
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 	<div class="row clearfix">
 		<div class="panel panel-default">
 			<div class="panel-body">

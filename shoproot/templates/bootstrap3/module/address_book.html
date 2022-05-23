@@ -3,37 +3,29 @@
 {config_load file="lang_`$language`.section" section="address_book"}
 <h1 class="well well-sm">{#heading_address#}</h1>
 {$FORM_ACTION}
-{if $error != ''}<div class="alert alert-warning">{$error}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 {if $success_message}<div class="alert alert-success">{$success_message}</div>{/if}
 <div class="row clearfix">
-	<div class="col-md-6 mb">
-  		<div class="panel panel-default">
-			<div class="panel-body">
-				<h4>{#title_standard#}</h4>
-				<p>{#text_standard#}</p>
-			</div>
-			<div class="panel-footer">
-				<p>{$ADDRESS_DEFAULT}</p>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-6 mb">
+	<div class="col-xs-12 mb">
   		<div class="panel panel-default">
 			<div class="panel-body">
 				<h4>{#title_addresses#}</h4>
-                <p>{$ADDRESS_COUNT}</p>
-			</div>
-			<div class="list-group">
-    {foreach name=aussen item=addresses from=$addresses_data}
-			<div class="list-group-item">
-    <div class="pull-right"><span class="show mb">{$addresses.BUTTON_EDIT|button}</span>{$addresses.BUTTON_DELETE|button}</div>
-      <strong>{$addresses.NAME} {if $addresses.PRIMARY == '1'} ({#title_standard#}) {/if}</strong><br />
-      {$addresses.ADDRESS}
-			</div>
-    {/foreach}
+				<p>{#text_standard#}</p>
+				<p>{$ADDRESS_COUNT}</p>
 			</div>
 		</div>
 	</div>
+    {foreach name=aussen item=addresses from=$addresses_data}
+	<div class="col-md-6 mb">
+  		<div class="panel panel-{if $addresses.PRIMARY == '1'}primary{else}default{/if}">
+			<div class="panel-body">
+				<div class="pull-right"><span class="show mb">{$addresses.BUTTON_EDIT|button}</span>{$addresses.BUTTON_DELETE|button}</div>
+				<strong>{$addresses.NAME} {if $addresses.PRIMARY == '1'} ({#title_standard#}) {/if}</strong><br />
+				{$addresses.ADDRESS}
+			</div>
+		</div>
+	</div>
+    {/foreach}
 </div>
 
 <div class="clearfix mb">

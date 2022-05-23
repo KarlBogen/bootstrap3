@@ -2,6 +2,8 @@
 {config_load file="lang_`$language`.custom"}
 {config_load file="lang_`$language`.section" section="reviews"}
 <h1 class="well well-sm">{#heading_product_reviews#} {$PRODUCTS_NAME}</h1>
+{if isset($REVIEWS_NOTE)}<div class="text-right mb">{$REVIEWS_NOTE|replace:'class="':'class="btn btn-link btn-sm '}</div>{/if}
+{if $error_message}<div class="alert alert-danger">{$error_message}</div>{/if}
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row clearfix">

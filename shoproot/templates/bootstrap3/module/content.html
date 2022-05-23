@@ -1,4 +1,7 @@
-{if isset($CONTENT_HEADING)}<h1 class="well well-sm">{$CONTENT_HEADING}</h1>{/if}
+{if isset($CONTENT_HEADING)}
+	<h1 class="well well-sm">{$CONTENT_HEADING}</h1>
+	{if $error_message && !isset($file)}<div class="alert alert-danger">{$error_message}</div>{/if}
+{/if}
 <div class="row clearfix mb">
 <div class="col-xs-12">
 	{if isset($file)}
@@ -6,11 +9,11 @@
 		{$file}
 	{else}
 		<div class="pull-left">
-			{if isset($SUB_CONTENT_LISTING)}<div class="subcontent  col-sm-4 pull-right">{$SUB_CONTENT_LISTING}</div>{/if}
+			{if isset($SUB_CONTENT_LISTING) && trim($SUB_CONTENT_LISTING) != ''}<div class="subcontent col-sm-4 pull-right">{$SUB_CONTENT_LISTING}</div>{/if}
 			{$CONTENT_BODY}
 		</div>
 	{/if}
-	{if isset($MODULE_content_manager_media)}
+	{if isset($MODULE_content_manager_media) && trim($MODULE_content_manager_media) != ''}
 		{$MODULE_content_manager_media}
 	{/if}
 </div>
