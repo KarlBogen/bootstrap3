@@ -1,6 +1,6 @@
 # Bootstrap3 für Modified Shop 2.0 - freies responsive Template
 
-Das Template basiert auf dem Bootstrap-Framework 3 und wurde zuletzt angepasst und getestet mit der **Modified Shopversion 2.0.6.0**.
+Das Template basiert auf dem Bootstrap-Framework 3 und wurde zuletzt angepasst und getestet mit der **Modified Shopversion 2.0.7.0**.
 
 ![](images/screenshot_1.png)
 
