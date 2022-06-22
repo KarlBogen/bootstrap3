@@ -1,6 +1,6 @@
 UNRELEASED
 
-
+- Button für Modul "Kundenerinnerung" in source/inc/button.inc.php ergänzt
 
 1.1.3 [23.05.2022]
 

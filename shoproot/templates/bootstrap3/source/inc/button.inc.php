@@ -70,6 +70,8 @@ function get_bootstrap_button($image, $alt = '', $parameters = '', $submit = fal
     'print.gif'                     => array('Image' => '',                       'Text' => TEXT_PRINT,                     'glyphicon' => 'glyphicon-print',           'glyphiconposition' => 'left',		'Class' => 'btn btn-default btn-sm'),
     'button_goto_cart.gif'          => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-shopping-cart',   'glyphiconposition' => 'left',		'Class' => 'btn btn-default btn-sm'),
     'button_manufactors_info.gif'   => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-list-alt',        'glyphiconposition' => 'left',		'Class' => 'btn btn-default btn-sm'),
+	// Modul Kundenerinnerung
+    'remind.gif'                    => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-envelope',   		'glyphiconposition' => 'left',		'Class' => 'remind'),
     );
 
     if (!array_key_exists($name, $buttons)) {$name = 'default';}
