@@ -71,7 +71,7 @@ function get_bootstrap_button($image, $alt = '', $parameters = '', $submit = fal
     'button_goto_cart.gif'          => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-shopping-cart',   'glyphiconposition' => 'left',		'Class' => 'btn btn-default btn-sm'),
     'button_manufactors_info.gif'   => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-list-alt',        'glyphiconposition' => 'left',		'Class' => 'btn btn-default btn-sm'),
 	// Modul Kundenerinnerung
-    'remind.gif'                    => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-envelope',   		'glyphiconposition' => 'left',		'Class' => 'remind'),
+    'remind.gif'                    => array('Image' => '',                       'Text' => $alt,                           'glyphicon' => 'glyphicon-envelope',   		'glyphiconposition' => 'left',		'Class' => 'remind" style="white-space:normal'),
     );
 
     if (!array_key_exists($name, $buttons)) {$name = 'default';}
