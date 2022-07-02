@@ -1,18 +1,18 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="lang_`$language`.custom"}
 {if isset($BOX_CONTENT) && count($BOX_CONTENT) > 0}
-<div class="box1 panel panel-default">
-	<div class="box1_header panel-heading">
-		<span class="panel-title">{#heading_order_history#}</span>
-	</div>
-	<div class="panel-body">
-  {foreach item=data from=$BOX_CONTENT}
-  <div class="mb clearfix">
-  <div class="btn-group btn-group-xs">
-    {$data.PRODUCTS_LINK}{$data.ORDER_LINK}
-  </div>
-  </div>
-  {/foreach}
-  </div>
+	{config_load file="$language/lang_$language.conf" section="boxes"}
+	{config_load file="lang_`$language`.custom"}
+	<div class="box1 panel panel-default">
+		<div class="box1_header panel-heading">
+			<span class="panel-title">{#heading_order_history#}</span>
+		</div>
+		<div class="panel-body">
+	  {foreach item=data from=$BOX_CONTENT}
+	  <div class="mb clearfix">
+	  <div class="btn-group btn-group-xs">
+	    {$data.PRODUCTS_LINK}{$data.ORDER_LINK}
+	  </div>
+	  </div>
+	  {/foreach}
+	  </div>
   </div>
 {/if}

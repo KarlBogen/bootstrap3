@@ -1,23 +1,23 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="lang_`$language`.custom"}
 {if isset($FORM_ACTION) && $FORM_ACTION != ''}
-<div class="box1 panel panel-default">
-	<div class="box1_header panel-heading">
-		<span class="panel-title">{#heading_login#}</span>
+	{config_load file="$language/lang_$language.conf" section="boxes"}
+	{config_load file="lang_`$language`.custom"}
+	<div class="box1 panel panel-default">
+		<div class="box1_header panel-heading">
+			<span class="panel-title">{#heading_login#}</span>
+		</div>
+		<div class="panel-body">
+	    {$FORM_ACTION}
+			<div class="form-group">
+	        	<label class="small">{#text_email#}:</label>
+	    		{$FIELD_EMAIL|replace:"type=\"text\"":"type=\"email\""}
+	    	</div>
+			<div class="form-group">
+	    		<label class="small">{#text_pwd#}:</label>
+				{$FIELD_PWD}
+	    	</div>
+			<a class="small pull-left" href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a>
+			{$BUTTON|button}
+		{$FORM_END}
+		</div>
 	</div>
-	<div class="panel-body">
-    {$FORM_ACTION}
-		<div class="form-group">
-        	<label class="small">{#text_email#}:</label>
-    		{$FIELD_EMAIL|replace:"type=\"text\"":"type=\"email\""}
-    	</div>
-		<div class="form-group">
-    		<label class="small">{#text_pwd#}:</label>
-			{$FIELD_PWD}
-    	</div>
-		<a class="small pull-left" href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a>
-		{$BUTTON|button}
-	{$FORM_END}
-	</div>
-</div>
 {/if}

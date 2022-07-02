@@ -1,26 +1,26 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="lang_`$language`.custom"}
 {if isset($REVIEWS_WRITE_REVIEW) || isset($RANDOM)}
-<div class="box1 panel panel-default">
-	<div class="box1_header panel-heading">
-		<span class="panel-title">{#heading_reviews#}</span>
-		<a class="show_all pull-right" href="{$REVIEWS_LINK}">{#show_all#} <span class="arrow">&raquo;</span></a>
-	</div>
-	<div class="panel-body">
-	{if isset($RANDOM)}
-		<div class="box-title mb"><a href="{$PRODUCTS_LINK}"><strong>{$PRODUCTS_NAME}</strong></a></div>
-		{if $PRODUCTS_IMAGE != ''}<div class="box_image text-center"><a class="img-thumbnail" href="{$PRODUCTS_LINK}"><img class="img-responsive" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></div>{/if}
-    </div>
-    <div class="panel-footer text-center">
-		<div class="box_text small mb">{$REVIEWS|onlytext}</div>
-    	<div class="box_reviews_image">{$REVIEWS_IMAGE}</div>
-		{if isset($REVIEWS_NOTE)}
-			<div class="box_reviews_note small mt">{$REVIEWS_NOTE}</div>
+	{config_load file="$language/lang_$language.conf" section="boxes"}
+	{config_load file="lang_`$language`.custom"}
+	<div class="box1 panel panel-default">
+		<div class="box1_header panel-heading">
+			<span class="panel-title">{#heading_reviews#}</span>
+			<a class="show_all pull-right" href="{$REVIEWS_LINK}">{#show_all#} <span class="arrow">&raquo;</span></a>
+		</div>
+		<div class="panel-body">
+		{if isset($RANDOM)}
+			<div class="box-title mb"><a href="{$PRODUCTS_LINK}"><strong>{$PRODUCTS_NAME}</strong></a></div>
+			{if $PRODUCTS_IMAGE != ''}<div class="box_image text-center"><a class="img-thumbnail" href="{$PRODUCTS_LINK}"><img class="img-responsive" src="{$PRODUCTS_IMAGE}" alt="{$PRODUCTS_NAME|onlytext}" title="{$PRODUCTS_NAME|onlytext}" /></a></div>{/if}
+	    </div>
+	    <div class="panel-footer text-center">
+			<div class="box_text small mb">{$REVIEWS|onlytext}</div>
+	    	<div class="box_reviews_image">{$REVIEWS_IMAGE}</div>
+			{if isset($REVIEWS_NOTE)}
+				<div class="box_reviews_note small mt">{$REVIEWS_NOTE}</div>
+			{/if}
+		</div>
+		{else}
+			<p class="onlytop"><a href="{$PRODUCTS_LINK}">{$REVIEWS_WRITE_REVIEW}</a></p>
+		</div>
 		{/if}
 	</div>
-	{else}
-		<p class="onlytop"><a href="{$PRODUCTS_LINK}">{$REVIEWS_WRITE_REVIEW}</a></p>
-	</div>
-	{/if}
-</div>
 {/if}

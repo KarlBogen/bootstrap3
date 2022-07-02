@@ -1,5 +1,11 @@
 UNRELEASED
 
+
+
+
+1.1.4 [02.07.2022]
+
+- Update zu Shopversion 2.0.7.1
 - Button für Modul "Kundenerinnerung" in source/inc/button.inc.php ergänzt
 
 1.1.3 [23.05.2022]

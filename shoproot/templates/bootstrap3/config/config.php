@@ -10,6 +10,8 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
+	/* Version 1.1.4 */
+
   /*
    *  template specific defines
    */

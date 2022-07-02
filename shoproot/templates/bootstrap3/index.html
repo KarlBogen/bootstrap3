@@ -9,7 +9,7 @@
 	<div class="top nav navbar-{$smarty.const.TOP1_NAVBAR}">
 		<div id="layout_navbar" class="container">
   			<div id="logo1" class="pull-left hidden-xs"><a href="{$index}" title="{#link_index#} &bull; {$store_name}"><img class="img-responsive center-block" src="{$tpl_path}{$smarty.const.SHOP_LOGO}" alt="{$store_name}" /></a></div>
-			{if isset($box_LANGUAGES) && trim($box_LANGUAGES) != ''}{$box_LANGUAGES}{/if}
+			{if isset($box_LANGUAGES) && $box_LANGUAGES != ''}{$box_LANGUAGES}{/if}
 			<ul class="nav nav-pills pull-right">
 				<li class="{if isset($home) && $home == true}active{/if}"><a href="{$index}"><span class="glyphicon glyphicon-home"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_index#}</span></a></li>
 				{if isset($account)}<li{if strpos($smarty.server.PHP_SELF, 'account') !== false && strpos($smarty.server.PHP_SELF, 'create_account') === false} class="active"{/if}><a href="{$account}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="hidden-xs">&nbsp;&nbsp;{#link_account#}</span></a></li>{/if}
