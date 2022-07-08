@@ -1,7 +1,7 @@
 UNRELEASED
 
 
-
+- Modalbox in offline.html ergänzt
 
 1.1.4 [02.07.2022]
 
