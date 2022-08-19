@@ -1,6 +1,6 @@
 UNRELEASED
 
-
+- javascript/extra/cookieconsent.js.php angepasst an OIL.js Consent Management v1.34
 - Modalbox in offline.html ergänzt
 
 1.1.4 [02.07.2022]
